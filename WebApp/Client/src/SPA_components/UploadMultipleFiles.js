@@ -12,7 +12,6 @@ class UploadMultipleFiles extends Component {
         selectedFile: null,
         loaded:0
       }
-
   }
 
 Logout = () =>{

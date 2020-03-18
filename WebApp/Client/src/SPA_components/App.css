@@ -357,6 +357,7 @@ html {
   margin-top : 5%;
   margin-bottom : 10px;
   z-index:2;
+  padding : 10px;
 }
 
 .Login {
@@ -414,9 +415,28 @@ html {
   margin: 0 auto;
   max-width: 300px;
 }
-
+.CameraFeed{
+  width:540px;
+  height:480px;
+}
+.columnLeftCamera{
+position:relative;
+float:left;
+}
+.columnRightCamera{
+  position:relative;
+  float:right;
+  right:5%;
+}
 .outputdiv {
   opacity: 0;
+}
+.LiveFeedDiv{
+  position:relative;
+}
+.LiveFeed{
+  width:540px;
+  height:480px;
 }
 .footer {
   position: relative;

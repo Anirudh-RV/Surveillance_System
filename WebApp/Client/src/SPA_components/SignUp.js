@@ -170,11 +170,11 @@ handleSubmit = () =>{
 render() {
     return (
       <div className = "BackgroundSign">
-      <h1 className = "AppName" >End-to-end data curation and annotation platform</h1>
+      <h1 className = "AppName" >Surveillance System</h1>
       <div className="Login">
         <form>
-        <p class = "SignInHead">X-P1</p>
-        <p class = "SignUpHead">Sign up to make data collection and image annotation easier.</p>
+        <p class = "SignInHead">NameOfApp</p>
+        <p class = "SignUpHead">Sign Up for some usage for the customer.</p>
 
         <FormGroup controlId="email" bsSize="large">
           <FormControl

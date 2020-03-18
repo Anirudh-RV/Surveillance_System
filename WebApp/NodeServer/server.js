@@ -17,6 +17,8 @@ app.use('/static', express.static(__dirname + '/public'));
 app.use('/videos',express.static(__dirname+ '/public/Downloaded'))
 app.use('/img',express.static(path.join(__dirname, 'public/uploaded')));
 app.use('/file',express.static(path.join(__dirname,'public/file')));
+app.use('/CameraFeed',express.static(path.join(__dirname,'public/CameraFeed')));
+
 app.use(
   bodyParser.urlencoded({
     extended: true

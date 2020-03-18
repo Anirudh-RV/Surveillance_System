@@ -17,7 +17,7 @@ class Signin extends Component {
       <div className="SignIn">
         <p className="SignInHead">Sorry, this page isn't available.</p>
         <p className = "LinkToAccount"> The link you followed may be broken, or the page may have been removed.<br/>
-          <Link className="LinkToImageAnnotation" to = '/'>Go back to XP-1.</Link>
+          <Link className="LinkToImageAnnotation" to = '/'>Go back to Homepage.</Link>
         </p>
       </div>
       </div>

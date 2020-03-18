@@ -10,14 +10,12 @@ import Bootstrap from "react-bootstrap";
 import {FormGroup, FormControl} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
-class DownloadVideoComponent extends Component {
+class WelcomePage extends Component {
 
 componentDidMount(){
 // OnLoad function
 // if counter exceeds 5, then stop process
-this.heading.innerHTML = this.props.location.state.userName+"</br>Start Your Data Science Jounrney with AppName";
-this.buttonpressed = 0;
-this.counter = 0;
+this.heading.innerHTML = this.props.location.state.userName+"</br>Surveillance System";
 }
 
 dividetheframes = () =>{
@@ -54,12 +52,26 @@ do { d2 = new Date(); }
 while(d2-d < ms);
 }
 
-gotoeditpage = () =>{
+SeeCameraFeed = () =>{
   var userName = this.props.location.state.userName;
   this.props.history.push({
-    pathname: '/EditPage',
+    pathname: '/CameraFeed',
     state: {userName: this.props.location.state.userName}
 })
+}
+
+StartAnnotation = () =>{
+  var userName = this.props.location.state.userName;
+  this.props.history.push({
+    pathname: '/upload',
+    state: {userName: this.props.location.state.userName}
+})
+}
+
+Logout = () =>{
+    const cookies = new Cookies()
+    cookies.remove('username');
+    window.location.reload(false);
 }
 
 handleSubmit = () =>{
@@ -88,41 +100,29 @@ render() {
       <div className = "BackgroundSign">
       <h1 className = "AppName" ref = {c => this.heading = c}></h1>
       <div className="SignIn">
-        <form onSubmit={this.handleSubmit}>
+        <form>
         <p class = "SignInHead">Surveillance System</p>
-        <p class = "SignUpHead">Begin the data gathering process with just a few steps.</p>
+        <p class = "SignUpHead">Some information about the system.</p>
         &nbsp;
           <FormGroup controlId="url" bsSize="large">
-            <FormControl
-              autoFocus
-              placeholder="Enter the url of the youtube video"
-              ref = {c => this.videourl = c}
-            />
+          <Button className="StartButton" block bsSize="large" onClick={this.SeeCameraFeed} type="button">
+            See CameraFeed
+          </Button>
           </FormGroup>
 
           <FormGroup controlId="url" bsSize="large">
-            <FormControl
-              autoFocus
-              placeholder="Enter the name of the video"
-              ref = {c => this.videoname = c}
-            />
-          </FormGroup>
-
-          <Button className="StartButton" block bsSize="large" onClick={this.handleSubmit} type="button">
-            Download
-          </Button>
-
-          <Button className="StartButton" block bsSize="large" onClick={this.dividetheframes} type="button">
+          <Button className="StartButton" block bsSize="large" onClick={this.StartAnnotation} type="button">
             Start Annotation
           </Button>
+          </FormGroup>
 
           <br/>
           <p className = "ErrorMessage" ref = {c => this.Message = c}></p>
         </form>
       </div>
       <div className="SecondBoxSignIn" ref = {c => this.Info = c}>
-        <p className = "LinkToAccount"> Download complete and not redirecting?Click here&nbsp;
-          <Link className="LinkToSignUp" onClick={this.dividetheframes}>Redirect</Link>
+        <p className = "LinkToAccount"> Some LOGOUT option ?Click here&nbsp;
+          <Link className="LinkToSignUp" onClick={this.Logout}>LOGOUT</Link>
         </p>
       </div>
       </div>
@@ -130,4 +130,4 @@ render() {
   }
 }
 
-export default DownloadVideoComponent;
+export default WelcomePage;

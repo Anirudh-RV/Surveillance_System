@@ -7,7 +7,8 @@ import UploadMultipleFiles from './UploadMultipleFiles';
 import EditPage from './EditPage';
 import Home from './Home';
 import DownloadVideoComponent from './DownloadVideoComponent';
-
+import WelcomePage from './WelcomePage';
+import CameraFeed from './CameraFeed';
 class CustomRouting extends Component {
 //TODO : ADD Footer information
 
@@ -23,9 +24,10 @@ class CustomRouting extends Component {
               <Route path="/upload" component={UploadMultipleFiles}/>
               <Route path="/EditPage" component={EditPage}/>
               <Route path="/DownloadVideoComponent" component={DownloadVideoComponent}/>
-
+              <Route path="/WelcomePage" component={WelcomePage}/>
+              <Route path = "/CameraFeed" component = {CameraFeed} />
               <Redirect to={{
-            pathname: '/upload',
+            pathname: '/CameraFeed',
             state: {userName:this.props.location.state.usercredentials}
         }}
 />

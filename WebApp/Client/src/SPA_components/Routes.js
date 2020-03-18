@@ -53,6 +53,8 @@ class Routes extends Component {
                  <Route path ="/upload" component = {CustomRouting} />
                  <Route path = "/testnodeapi" component = {TestNodeAPI} />
                  <Route path = "/testdjangoapi" component = {TestDjangoApi} />
+                 <Route path = "/WelcomePage" component = {Home} />
+
                  <Route component={Error} />
                </Switch>
             </div>
