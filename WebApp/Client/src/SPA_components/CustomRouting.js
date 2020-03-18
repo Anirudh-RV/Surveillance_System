@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import UploadMultipleFiles from './UploadMultipleFiles';
 import EditPage from './EditPage';
 import Home from './Home';
+import DownloadVideoComponent from './DownloadVideoComponent';
 
 class CustomRouting extends Component {
 //TODO : ADD Footer information
@@ -21,6 +22,8 @@ class CustomRouting extends Component {
               <Switch>
               <Route path="/upload" component={UploadMultipleFiles}/>
               <Route path="/EditPage" component={EditPage}/>
+              <Route path="/DownloadVideoComponent" component={DownloadVideoComponent}/>
+
               <Redirect to={{
             pathname: '/upload',
             state: {userName:this.props.location.state.usercredentials}

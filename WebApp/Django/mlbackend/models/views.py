@@ -14,7 +14,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.csrf import csrf_exempt
 import json
 # to read images from urls
-from darkflow.net.build import TFNet
 
 import os
 import time
@@ -23,10 +22,13 @@ import ast
 # to read images from urls
 import PIL
 from PIL import Image
+import cv2
+import random
+import requests
+from darkflow.net.build import TFNet
 import tensorflow as tf
 print(tf.__version__)
 import numpy as np
-import cv2
 from timeit import default_timer as timer
 # textbox++ models
 from tbpp_model import TBPP512, TBPP512_dense
@@ -39,7 +41,6 @@ import matplotlib.pyplot as plt
 import requests
 from ssd_data import preprocess
 import numpy as np
-
 #for yolo9000
 
 yolo9000 = {"model" : "cfg/yolo9000.cfg", "load" : "yolo9000.weights", "threshold": 0.01}
@@ -61,7 +62,6 @@ with sl_graph.as_default():
 input_width = 256
 input_height = 32
 weights_path = 'weights.022.h5'
-
 
 def get_iou(bb1, bb2):
     """
@@ -113,9 +113,103 @@ def get_iou(bb1, bb2):
     assert iou <= 1.0
     return iou
 
+
+@csrf_exempt
+def dividetheframes(request):
+    decodeddata = request.body.decode('utf-8')
+    dictdata = ast.literal_eval(decodeddata)
+    username = dictdata["username"]
+
+    # Video input
+    vid_name = dictdata["videoname"]
+    vid_url = dictdata["videourl"]
+    #provide the image type
+    img_type = dictdata["imagetype"]
+    #provide the random range in secs
+    low = int(dictdata["low"])
+    high = int(dictdata["high"])
+
+    print("username : " + username)
+    print("vid_url : "+vid_url)
+    print("vid_name :"+vid_name)
+    print("img_type : "+img_type)
+    print("low : "+str(low))
+    print("high : "+str(high))
+
+    # for storing all the image names
+    image_names = []
+
+    # reading video file
+    cap = cv2.VideoCapture(vid_url)
+    frame_width = int(cap.get(3))
+    frame_height = int(cap.get(4))
+
+    # getting the frame length of the video
+    position = 1
+    length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    print( length )
+    frame_count = 1
+
+    # Video Capture using OpenCV VideoCapture
+    start_time = time.time()
+
+    # Check if the webcam is opened correctly
+    if not cap.isOpened():
+        raise IOError("Cannot open video")
+
+    # starting process
+    while frame_count < length - 1:
+        # selecting a random number of skip frames within the range (low,high)
+        # per second 30 frames
+        skip = random.randint(low*30,high*30)
+        current_count = 1
+        print("skip : "+str(skip))
+
+        while current_count != skip:
+            ret, frame = cap.read()
+            frame_count = frame_count + 1
+            current_count = current_count + 1
+
+        print("current_count : "+str(current_count))
+        ret, frame = cap.read()
+        frame_count = frame_count + 1
+        if frame is not None:
+            image_names.append("output_"+str(vid_name)+"_"+str(position)+"."+img_type)
+            cv2.imwrite("assets/output_"+str(vid_name)+"_"+str(position)+"."+img_type, frame)
+            position = position + 1
+
+        print("frame_count : "+str(frame_count))
+
+    print("Images derived :")
+    print(image_names)
+    elapsed_time = time.time() - start_time
+    print("Performace measure : "+str(elapsed_time))
+
+
+    for images in image_names:
+        print("Sending to back end...")
+        print("image name : "+images)
+        files = {'file': open('assets/'+images, 'rb')}
+        headers = {
+            'username': username,
+        }
+        response = requests.request("POST", 'http://localhost:4000/upload', files=files, headers=headers)
+        print(response)
+
+    sendImageDataToApi = username
+    for images in image_names:
+        sendImageDataToApi = sendImageDataToApi + ","+images
+
+    print("data being sent to Go API: "+sendImageDataToApi)
+    response = requests.request("POST","http://localhost:8080/insertimagedata",data = sendImageDataToApi)
+    print(response)
+
+    print("Backend Process Complete")
+    context = {"data":"data"}
+    return render(request, 'index.html', context)
+
 @csrf_exempt
 def yolo(request):
-    all_labels = []
     decodeddata = request.body.decode('utf-8')
     dictdata = ast.literal_eval(decodeddata)
     username = dictdata["username"]
@@ -145,7 +239,6 @@ def yolo(request):
 
     for res in result:
         print(res["label"])
-        all_labels.append(res["label"])
         if res["label"] == "whole":
             continue
         elif res["label"] == "person":
@@ -154,7 +247,6 @@ def yolo(request):
             top = (res["topleft"]["x"], res["topleft"]["y"])
             bottom = (res["bottomright"]["x"], res["bottomright"]["y"])
             # for each person
-            print("ML - coordinates :")
             print(top)
             print(bottom)
 
@@ -204,8 +296,6 @@ def yolo(request):
         for i in range(0,difference):
             IoU.append(0)
 
-    print("All labels : ")
-    print(all_labels)
     print("IoU : ")
     print(IoU)
     averageIoU = np.mean(IoU)

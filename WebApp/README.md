@@ -1,12 +1,161 @@
+# DEPLOYMENT (Coming soon...)
+
+# Overall requirements
+
+1. Make sure dividing the frames happens without errors (Just have a delay after downloading)
+2. Connect back the DownloadVideoComponent back to EditPage
+3. django backend should save the images in the users folders
+4. EditPage should be able to see and annotate these images without errors
+5. Additional functionality of uploading videos directly (Optional when deployment is done,Use dividevideo.py instead)
+6. Add this to the DownloadVideoComponent file
+
+# Introduction to ImageAnnotationIoUTool
+
+**Technologies used**
+1. ReactJs for Frontend (3000)
+2. NodeJs for Backend (4000)
+3. Django to run the Machine learning algorithms in the background (8000)
+4. Golang for running GO API's to connect the application with the Database (8080)
+5. MongoDB as NoSQL Database (27017)
+6. OpenCV for drawing boxes and checking IoU and for dividing the video into frames
+7. DarkFlow for running yolo9000
+8. tensorflow, numpy, keras for assisting the machine learning application
+9. matplotlib is being used for testing images (display of images)
+10. Vanilla Js for functions and bits of React code
+
+**How it works**
+
+*Downloading and processing video :*
+1. If a video is already available, place it in the main folder or download a video from YouTube(Y2 downloader or In-House application)
+2. Run the dividevideo.py to split the video into frames at random intervals between 2-5 seconds (considering 30 fps)
+3. The divided frames will be available in the Dividedframes folder
+
+*Annotation System :*
+1. The user signs up into the system by giving email,username,name and password
+2. Once the signUp is successful, the user is redirected to the upload page
+3. The user can upload upto 99 images at once and click viewimages
+4. Upon succeful upload of the images, the user is redirected to the EditPage
+5. EditPage contains the NavigationBar and the WorkingArea
+6. The user can draw boxes around the subject of interest and click save
+7. Upon clicking save, the coordinates of the boxes drawn will be saved in the backend
+8. The User has two options to check the IoU :
+  a. Check IoU at each image :
+    1. The user can click on Check ml output yolo to check the IoU for that particular file
+    2. Continue this process for each image and the individual IoU's will be saved in the IoU folder in IoU.txt
+    3. Download/DownloadAll depending on the nature of output needed
+      I.Download will only download the annotations
+      II.DownloadAll will download the images,mloutputs,annotations,IoU and any aditional data present
+  b. Continue the annotations for all images and check IoU together
+    1. The user can just keep annotating images to have a smooth workflow
+    2. DownloadAll once the annotations are done
+    3. Place the images and the output in the checkIoU folder
+    4. Run iou.py to check the IoU of all images and store it in the IoU folder in IoU.txt
+9. The output of the machine learning algorithms can be seen by running checkmloutput.py, images will be stored in the mlimages folder
+
+
+**System Architecture**
+system_architecture.jpeg
+
+**IOU**
+1. For people label on dataset collected from mainly Indian sources : 0.3005834618310959
+2. Number of images in test data : 381
+
+# Frame-Division-Data-Collection
+Download videos from youtube/ Upload videos onto the server and have it output frames of Images with a random interval between capturing frames
+
+for testing use :
+https://www.youtube.com/watch?v=RjEdmrxjIHQ
+
+How to start the application :
+
+Reactjs : 3000
+1. cd Client
+2. npm start
+
+Go API: 8080
+1. cd API_Go
+2. go run main.go
+
+Django: 8000
+1. cd pythonbackend
+2. cd djangobackend
+3. python3 manage.py runserver
+
+NodeServer: 4000
+1. cd NodeServer
+2. node server.js
+
+General guide :
+To Kill Ports  :
+lsof -P | grep ':4000' | awk '{print $2}' | xargs kill -9
+
+Reactjs :
+1. Figure this out or copy paste previous projects
+
+NodeServe :
+1. Copy the Server.js
+2. Copy the pacakage-lock.json
+3. npm install <necessary packages>
+
+Django :
+1. django-admin startproject mysite
+2. cd mysite
+3. python3 manage.py startapp polls
+4. python3 manage.py runserver
+
+templates :
+1. cd polls
+2. mkdir templates
+3. touch index.html
+extras:
+1. Add static paths in settings.py
+2. Add the installed apps in settings.py
+3. Add the cross origin request
+4. corsheaders in installed apps
+http://www.srikanthtechnologies.com/blog/python/enable_cors_for_django.aspx
+
+Requirements :
+1. Divide a video into frames using OpenCV in python
+2. Make the application dynamic, enable frontend interactions
+3. Optimize the system
+
+########--------------------------------------------------------------------------------------------------
+to accomplish requirement: 1 (COMPLETE)
+1. Divide a video into frames using OpenCV in python
+
+########--------------------------------------------------------------------------------------------------
+to accomplish requirement: 2 (COMPLETE)
+2. Make the application dynamic, enable frontend interactions
+
+########--------------------------------------------------------------------------------------------------
+to accomplish requirement: 3
+3. Optimize the system
+  a. How it sends requests.
+  b. Problems with django back
+
 # ImageAnnotationIoUTool : Application Phase-2 COMPLETE (Temporarily halted till phase-3 technology is learnt)
 How to start the application :
 
-# NEVER PUSH OR COMMIT WITH WEIGHTS IN THE FOLDER
+# TO CHECK IOU FOR TXT FILES AND IMAGES
+1. Copy images into checkIoU folder
+2. Copy output into checkIoU folder
+3. Change variables in the iou.py folder
+4. Run file
+5. Clear folders for next iteration of images
+
+# ERRORS :
+1. wrong credential go server crashes, fix it
+2. Download not happening through nodeserver
+3. Dividevideo file does not check if Dividedframes folder exists
+
+# NEVER PUSH OR COMMIT WITH WEIGHTS IN THE FOLDER UNLESS USING .GITIGNORE
+
+# Steps to run the application (may involve downloading mongo,go libraries and setting up django environment)
 1. clone the git
 2. Download both weights from :
-  https://drive.google.com/drive/folders/1pW4mKNOzOIf0Edyr4BppwnLpddCQ6Qch?usp=sharing
+  1. https://drive.google.com/drive/folders/1pW4mKNOzOIf0Edyr4BppwnLpddCQ6Qch?usp=sharing
 
-  https://drive.google.com/open?id=1JupZYcQO7Jh5aiRQLwNzYZaX0uYGULdK
+  2. https://drive.google.com/open?id=1JupZYcQO7Jh5aiRQLwNzYZaX0uYGULdK
 
 3. Place the weights in the Django/mlbackend folder with the other .py files
 
@@ -58,7 +207,34 @@ django-admin startproject mysite cd mysite python3 manage.py startapp polls pyth
 
 cd polls mkdir templates touch index.html extras: Add static paths in settings.py Add the installed apps in settings.py Add the cross origin request corsheaders in installed apps http://www.srikanthtechnologies.com/blog/python/enable_cors_for_django.aspx
 
-LOC : 2330  
+
+**LOC and program list :**
+1. main.go : 437
+2. CustomRouting.js : 53
+3. EditPage.js : 23
+4. Error.js : 27
+5. Footer.js : 14
+6. Home.js : 17
+7. IntroBar.js : 197
+8. Routes.js : 63
+9. Signin.js : 73
+10. SignUp.js : 233
+11. Test_Cookies.js : 53
+12. TestApi.js : 282
+13. TestDjango.js : 46
+14. TestNodeApi.js : 116
+15. UploadMultipleFiles.js : 164
+16. WorkingArea.js : 257
+17. Views.py : 320
+18. Server.js : 127
+19. checkmloutput.py : 45
+20. iou.py : 177
+21. dividevideo.py : 68
+
+LOC : 2812
+
+To count files :
+ls -F |grep -v / | wc -l
 
 To run build in production :
 serve -s build -l 3000

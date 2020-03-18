@@ -1,17 +1,5 @@
 # Introduction to ImageAnnotationIoUTool
 
-**Process of measuring IoU**
-1. Each bounding box with label : "people" is considered (Iterated through)
-2. The bounding box is checked with all the ground truths for IoU
-3. The maximum IoU is considered for that bounding box (non-max suppression)
-4. The above process is repeated for each bounding box detected by the YOLO algorithm
-5. To add the possibility that people in the ground truth are completely ignored by the yolo algorithm
-  a.The difference between the number of people detected by yolo and the number of people annotated for ground truth is considered
-  b.This is added as extra 0's to the list of the IoU's
-6. The average of all the maximum IoU's of each bounding box and the additional 0's is taken for overall IoU for an image
-7. The average of all the IoU's for each image is taken as the average IoU for the dataset (~400 images)
-8. check code in CheckIoU/iou.py for source code
-
 **Technologies used**
 1. ReactJs for Frontend (3000)
 2. NodeJs for Backend (4000)
@@ -53,74 +41,30 @@
     4. Run iou.py to check the IoU of all images and store it in the IoU folder in IoU.txt
 9. The output of the machine learning algorithms can be seen by running checkmloutput.py, images will be stored in the mlimages folder
 
-
 **System Architecture**
 system_architecture.jpeg
 
-**IOU**
-1. For people label on dataset collected from mainly Indian sources : 0.3005834618310959
-2. Number of images in test data : 381
+**LOC and program list if needed :**
+1. main.go : 437
+2. CustomRouting.js : 53
+3. EditPage.js : 23
+4. Error.js : 27
+5. Footer.js : 14
+6. Home.js : 17
+7. IntroBar.js : 197
+8. Routes.js : 63
+9. Signin.js : 73
+10. SignUp.js : 233
+11. Test_Cookies.js : 53
+12. TestApi.js : 282
+13. TestDjango.js : 46
+14. TestNodeApi.js : 116
+15. UploadMultipleFiles.js : 164
+16. WorkingArea.js : 257
+17. Views.py : 320
+18. Server.js : 127
+19. checkmloutput.py : 45
+20. iou.py : 177
+21. dividevideo.py : 68
 
-**Steps to run the application (may involve downloading mongo,go libraries and setting up django environment)**
-1. clone the git
-2. Download both weights from :
-  1. https://drive.google.com/drive/folders/1pW4mKNOzOIf0Edyr4BppwnLpddCQ6Qch?usp=sharing
-
-  2. https://drive.google.com/open?id=1JupZYcQO7Jh5aiRQLwNzYZaX0uYGULdK
-
-3. Place the weights in the Django/mlbackend folder with the other .py files
-
-Reactjs : 3000
-1. cd Client
-2. npm install
-3. npm start
-
-Go API: 8080
-1. cd API_Go
-2. go run main.go
-
-Django: 8000
-1. cd pythonbackend
-2. cd djangobackend
-3. python3 manage.py runserver
-
-NodeServer: 4000
-1. cd NodeServer
-2. node server.js
-
-# if npm build is failing, install by : npm install <absent library>
-
-For building yolo9000 :
-$ pip install Cython
-$ git clone https://github.com/thtrieu/darkflow.git
-$ cd darkflow
-$ python3 setup.py build_ext --inplace
-$ pip install .
-# anywhere in the system
-
-To get mongo working :
-1. use GoDB
-2. db.createCollection("ImageNames")
-3. db.createCollection("UserData")
-
-# Surveillance_System
-Surveillance System :
-
-
-1. Install DarkNet
-2. Install Cython
-3. Download both weights from :
-
-https://drive.google.com/drive/folders/1pW4mKNOzOIf0Edyr4BppwnLpddCQ6Qch?usp=sharing
-
-
-https://drive.google.com/open?id=1JupZYcQO7Jh5aiRQLwNzYZaX0uYGULdK
-
-4. Can either Clone the directory or download the ZIP file from the above link.
-5. Run FinalYearNoteBook.ipynb and see the project.
-6. Edit the directory in the notebook according to your system.
-
-
-for 08/02/20 :
-
-1. Check code_25.py for code
+LOC : 2812

@@ -5,14 +5,8 @@ import time
 import random
 
 # Video file should be the full video name
-vid_file = "beach.mp4"
-vid_name = "beach"
-directory = "beach"
-
-# Parent Directory path
-parent_dir = "Dividedframes/"
-path = os.path.join(parent_dir, directory)
-os.mkdir(path)
+vid_file = "mgroad.mp4"
+vid_name = "mgroad"
 
 # for storing all the image names
 image_names = []
@@ -59,8 +53,8 @@ while frame_count < length - 1:
     ret, frame = cap.read()
     frame_count = frame_count + 1
     if frame is not None:
-        image_names.append(str(vid_name)+"_"+str(position)+"."+image_type)
-        cv2.imwrite("Dividedframes/"+str(vid_name)+"/"+str(vid_name)+"_"+str(position)+"."+image_type, frame)
+        image_names.append("output_"+str(vid_name)+"_"+str(position)+"."+image_type)
+        cv2.imwrite("Dividedframes/output_"+str(vid_name)+"_"+str(position)+"."+image_type, frame)
         number_of_pictures = number_of_pictures + 1
         position = position + 1
 
