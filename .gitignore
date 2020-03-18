@@ -1,0 +1,11 @@
+*.cfg
+cfg/
+*.h5
+*.weights
+*.avi
+*.jpeg
+*.png
+node_modules/
+Data/
+*.mp4
+*.jpg
