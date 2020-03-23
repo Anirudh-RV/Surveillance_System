@@ -14,6 +14,11 @@
 
 #How it works
 
+**Streaming Output (Changes to this need to be made)**
+1. Using a flask backend to stream data from a security camera
+2. Displaying it live on a url
+3. Further changes and modifications can be made to the frames
+
 **Process of measuring IoU**
 1. Each bounding box with label : "people" is considered (Iterated through)
 2. The bounding box is checked with all the ground truths for IoU

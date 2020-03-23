@@ -8,6 +8,12 @@ import './App.css';
 import { FormControl} from "react-bootstrap";
 import StreamingFile from './StreamingFile'
 
+/*
+
+  python3 webstreaming.py -i 0.0.0.0 -o 5000 -f 15
+
+*/
+
 class CameraFeed extends Component {
   constructor(props, context) {
     super(props, context);

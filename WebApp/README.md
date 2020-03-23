@@ -1,5 +1,5 @@
 # DEPLOYMENT (Coming soon...)
-# MAKE IFRAME LIVE FEED WORK 
+# MAKE IFRAME LIVE FEED WORK
 # Overall requirements
 
 1. Make sure dividing the frames happens without errors (Just have a delay after downloading)
@@ -195,7 +195,7 @@ To get mongo working :
 Have fun
 ########--------------------------------------------------------------------------------------------------
 
-General guide : To Kill Ports : lsof -P | grep ':8000' | awk '{print $2}' | xargs kill -9
+General guide : To Kill Ports : lsof -P | grep ':0000' | awk '{print $2}' | xargs kill -9
 
 Reactjs :
 
