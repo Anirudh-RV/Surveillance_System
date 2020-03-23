@@ -16,6 +16,7 @@ import Error from './Error';
 import TestCookie from './Test_Cookies';
 import TestDjangoApi from './TestDjangoApi';
 import TestNodeAPI from './TestNodeAPI';
+import StreamingFile from './StreamingFile';
 
 // Routes for the webpages in the project
 
@@ -29,6 +30,7 @@ class Routes extends Component {
          <div>
            <Switch />
              <Switch>
+             <Route exact path = "/StreamingFile" component = {StreamingFile} />
              <Route path="/customrouting" component = {CustomRouting} />
              <Redirect to={{
                        pathname: '/customrouting',

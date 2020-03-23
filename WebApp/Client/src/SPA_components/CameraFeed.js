@@ -6,6 +6,7 @@ import "../../node_modules/video-react/dist/video-react.css";
 import logo from './logo.svg';
 import './App.css';
 import { FormControl} from "react-bootstrap";
+import StreamingFile from './StreamingFile'
 
 class CameraFeed extends Component {
   constructor(props, context) {
@@ -18,6 +19,7 @@ class CameraFeed extends Component {
 
     this.handleValueChange = this.handleValueChange.bind(this);
     this.updatePlayerInfo = this.updatePlayerInfo.bind(this);
+    this.count = 0;
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -40,8 +42,16 @@ class CameraFeed extends Component {
     });
   }
 
+
   CheckLiveFootage = () =>{
+    if(this.count>50){
+      // do nothing
+    }
+    else{
+    console.log("count: "+this.count);
+    this.count = this.count + 1;
     this.liveFeedPlayer.src = this.usercredentials.value;
+  }
   }
 
   render() {
@@ -112,7 +122,7 @@ class CameraFeed extends Component {
 
         <section>
         <div className="LiveFeedDiv">
-        <iframe className = "LiveFeed" ref = {c => this.liveFeedPlayer = c} src="http://192.168.1.6:8080/" name="myFrame"></iframe>
+        <iframe className = "LiveFeed" ref = {c => this.liveFeedPlayer = c} src=""></iframe>
         </div>
         </section>
       </div>

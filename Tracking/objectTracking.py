@@ -122,8 +122,6 @@ while index < len(imageArray):
                 currentValue = str(topstr)+" "+str(bottomstr)
                 currentCoordinates = currentCoordinates+str(topstr)+" "+str(bottomstr)+"\n"
 
-                # IOU PART - BEGIN
-                # Calculate IoU here with top and bottom, compare each drawn image with top and bottom, select the max IoU
                 if previousCoordinates != "":
 
                     bb2 = {}

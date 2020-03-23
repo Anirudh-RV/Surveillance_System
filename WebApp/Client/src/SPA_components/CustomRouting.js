@@ -9,6 +9,8 @@ import Home from './Home';
 import DownloadVideoComponent from './DownloadVideoComponent';
 import WelcomePage from './WelcomePage';
 import CameraFeed from './CameraFeed';
+import { useLocation } from 'react-router-dom'
+
 class CustomRouting extends Component {
 //TODO : ADD Footer information
 
@@ -16,6 +18,8 @@ class CustomRouting extends Component {
     // if logged in, redirect back to edit page or go to home
     try{
     if(this.props.location.state.checkval=== "Yes"){
+      console.log("path: "+this.props.location.pathname);
+
       return (
          <BrowserRouter>
           <div>
