@@ -1,6 +1,6 @@
 # Introduction to ImageAnnotationIoUTool
 
-#Technologies used
+# Technologies used
 1. ReactJs for Frontend (3000)
 2. NodeJs for Backend (4000)
 3. Django to run the Machine learning algorithms in the background (8000)
@@ -12,7 +12,7 @@
 9. matplotlib is being used for testing images (display of images)
 10. Vanilla Js for functions and bits of React code
 
-#How it works
+# How it works
 
 **Streaming Output (Changes to this need to be made)**
 1. Using a flask backend to stream data from a security camera
