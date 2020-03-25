@@ -20,7 +20,6 @@ this.handleEmail.bind(this);
 }
 
 //addusertodatabase
-
 signupUser = () =>{
     var email = this.emailId.value;
     var username = this.userName.value;
@@ -42,6 +41,7 @@ signupUser = () =>{
       })
 
 }
+
 len = (checkvar) => {
   return checkvar.length;
 }

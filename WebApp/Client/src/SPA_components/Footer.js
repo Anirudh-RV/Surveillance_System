@@ -6,7 +6,7 @@ class Footer extends Component {
   render() {
     return (
       <div className="footer">
-      Website developed by : Anirudh RV
+      System developed by : TEAM Anirudh RV, Brundha R, Eleanor Prashamshini, Myna P
       </div>
     );
   }

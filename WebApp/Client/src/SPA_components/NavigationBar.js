@@ -10,11 +10,6 @@ import { DropdownMenu ,MenuItem} from 'react-bootstrap-dropdown-menu';
 import { Collapse, CardBody, Card } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-/*
-onMouseDown onMouseEnter onMouseLeave
-onMouseMove onMouseOut onMouseOver onMouseUp
-*/
-
 const Navigationclass = () => (
    <nav>
      <ul className={styles.NaviText}>

@@ -10,11 +10,6 @@ import { DropdownMenu ,MenuItem} from 'react-bootstrap-dropdown-menu';
 import { Collapse, CardBody, Card } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-/*
-onMouseDown onMouseEnter onMouseLeave
-onMouseMove onMouseOut onMouseOver onMouseUp
-*/
-
  const NavigationBarComp = () => {
    // 1st element.
    const [isOpen1, setIsOpen1] = useState(false);
@@ -98,7 +93,7 @@ onMouseMove onMouseOut onMouseOver onMouseUp
     // closed already.
   }
 }
-   const [collapse3, setCollapse3] = useState(false);
+    const [collapse3, setCollapse3] = useState(false);
 
    // 4th element.
     const [isOpen4, setIsOpen4] = useState(false);

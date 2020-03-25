@@ -19,7 +19,6 @@ class CustomRouting extends Component {
     try{
     if(this.props.location.state.checkval=== "Yes"){
       console.log("path: "+this.props.location.pathname);
-
       return (
          <BrowserRouter>
           <div>

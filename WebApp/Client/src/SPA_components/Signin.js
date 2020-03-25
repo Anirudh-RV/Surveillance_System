@@ -10,7 +10,6 @@ import Cookies from 'universal-cookie';
 
 class Signin extends Component {
 //TODO : ADD Footer information
-// http://localhost:
 handleSubmit = () =>{
   var data = this.usercredentials.value+","+this.Password.value
   axios.post("http://localhost:8080/authorizeuser",data)

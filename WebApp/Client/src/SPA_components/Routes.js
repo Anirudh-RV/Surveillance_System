@@ -56,7 +56,6 @@ class Routes extends Component {
                  <Route path = "/testnodeapi" component = {TestNodeAPI} />
                  <Route path = "/testdjangoapi" component = {TestDjangoApi} />
                  <Route path = "/WelcomePage" component = {Home} />
-
                  <Route component={Error} />
                </Switch>
             </div>
@@ -65,5 +64,4 @@ class Routes extends Component {
       }
   }
 }
-
 export default Routes;

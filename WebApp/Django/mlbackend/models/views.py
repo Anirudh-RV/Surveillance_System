@@ -14,7 +14,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.csrf import csrf_exempt
 import json
 # to read images from urls
-
 import os
 import time
 import matplotlib.pyplot as plt
@@ -41,8 +40,8 @@ import matplotlib.pyplot as plt
 import requests
 from ssd_data import preprocess
 import numpy as np
-#for yolo9000
 
+#for yolo9000
 yolo9000 = {"model" : "cfg/yolo9000.cfg", "load" : "yolo9000.weights", "threshold": 0.01}
 tfnet = TFNet(yolo9000)
 
@@ -112,7 +111,6 @@ def get_iou(bb1, bb2):
     assert iou >= 0.0
     assert iou <= 1.0
     return iou
-
 
 @csrf_exempt
 def dividetheframes(request):
@@ -184,7 +182,6 @@ def dividetheframes(request):
     print(image_names)
     elapsed_time = time.time() - start_time
     print("Performace measure : "+str(elapsed_time))
-
 
     for images in image_names:
         print("Sending to back end...")

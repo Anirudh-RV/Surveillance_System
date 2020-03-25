@@ -8,12 +8,6 @@ import './App.css';
 import { FormControl} from "react-bootstrap";
 import StreamingFile from './StreamingFile'
 
-/*
-
-  python3 webstreaming.py -i 0.0.0.0 -o 5000 -f 15
-
-*/
-
 class CameraFeed extends Component {
   constructor(props, context) {
     super(props, context);
@@ -48,7 +42,6 @@ class CameraFeed extends Component {
     });
   }
 
-
   CheckLiveFootage = () =>{
     if(this.count>50){
       // do nothing
@@ -74,8 +67,7 @@ class CameraFeed extends Component {
         width={480}
         height={540}
         autoPlay = {true}
-
-          ref={player => {
+        ref={player => {
             this.player = player;
           }}
           videoId="video-1"
@@ -117,9 +109,8 @@ class CameraFeed extends Component {
             <Button type="button" onClick={this.CheckLiveFootage}>
               Check Footage
             </Button>
-
-            </FormGroup>
-          </Form>
+          </FormGroup>
+        </Form>
             <br/>
           </form>
         </div>

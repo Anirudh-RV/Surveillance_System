@@ -19,7 +19,8 @@ Logout = () =>{
     cookies.remove('username');
     window.location.reload(false);
 }
-  checkMimeType=(event)=>{
+
+checkMimeType=(event)=>{
     //getting file object
     let files = event.target.files
     //define message container
@@ -40,7 +41,7 @@ Logout = () =>{
     }
    return true;
   }
-  maxSelectFile=(event)=>{
+maxSelectFile=(event)=>{
     let files = event.target.files
         if (files.length > 101) {
            const msg = 'Only 10 images can be uploaded at a time'
@@ -49,7 +50,7 @@ Logout = () =>{
       }
     return true;
  }
- checkFileSize=(event)=>{
+checkFileSize=(event)=>{
   let files = event.target.files
   let size = 2000000
   let err = [];
