@@ -1,4 +1,4 @@
-# Introduction to ImageAnnotationIoUTool
+# Introduction to Implementation Mechanism
 
 #Technologies used
 1. ReactJs for Frontend (3000)
@@ -11,8 +11,59 @@
 8. tensorflow, numpy, keras for assisting the machine learning application
 9. matplotlib is being used for testing images (display of images)
 10. Vanilla Js for functions and bits of React code
+11. face_recognition library for comparing faces
+12. OpenCV haarcascades for detecting faces
+13. Flask for livestreaming (5000)
 
 #How it works
+
+# Live Streaming
+**Streaming Output (Changes to this need to be made)**
+1. Using a flask backend to stream data from a security camera
+2. Displaying it live on a url
+3. Further changes and modifications can be made to the frames
+
+
+# Recognising people
+The process of Recognising people is done with two separate steps :
+1. Cropping out the face from the body of a person which yolo has recognised
+2. Comparing a given face with the faces already stored in the backend
+
+**1. Cropping out the face from the body of a person which yolo has recognised**
+
+1. The boxes which have the label "people" are stored in the backend and periodically a script is run to
+find the faces of the people in those boxes (The boxes bound the body of the person)
+2. The boxes around the people help in increasing the accuracy and decreasing the workload on the algorithm
+to recognise just faces as it has to go through less complex structures in images
+3. cropjustface.py is run through the database to provide the images of just faces
+    a. This uses haarcascade_frontalface_default.xml set of weights
+    b. The weights are pre-trained and it can recognise faces and puts a bounding box around it
+4. These face images are stored separately
+
+**2. Comparing a given face with the faces already stored in the backend**
+
+1. When a particular image is being uploaded onto the webapp to check for similarities
+2. The image goes through the NodeServer and is stored in the backend
+3. The Django server then reads the URL where the image is stored and processes by using cropjustface algorithm to retrieve just the face.
+4. This image is then checked with every other face stored in the backend
+5. Each set of image is compared using the face_recognition library and an encodings matrix is formed
+6. The similarities between the encoding matrices of the User image and the backend image is calculated
+7. If the similarity is above a certain threshold / if the difference between the matrices below a certain
+threshold
+8. Then, the images are said to be similar and a True boolean value is returned
+9. All the URLs of the images which are similar are sent to the front end
+8. These URLs are read in the frontend and displayed on the webApp
+
+**Resources**
+1.  https://github.com/ageitgey/face_recognition
+2.  http://dlib.net/
+3.  https://github.com/opencv/opencv/tree/master/data/haarcascades
+
+starter code :
+1. https://towardsdatascience.com/face-detection-in-2-minutes-using-opencv-python-90f89d7c0f81
+2. https://github.com/12345k/Two-Face-Comparison
+
+# Measuring IoU
 
 **Process of measuring IoU**
 1. Each bounding box with label : "people" is considered (Iterated through)
@@ -26,6 +77,7 @@
 7. The average of all the IoU's for each image is taken as the average IoU for the dataset (~400 images)
 8. check code in CheckIoU/iou.py for source code
 
+# People tracking
 **Tracking People / Object Indexing :**
 1. Initialise detected people to 0
 2. When the processing of the frames start, each box that is detected by the yolo algorithm
@@ -69,6 +121,8 @@ person jumps between people
 2. To make the algorithm a lot less sensitive to change and have a better more strict policy to change the
 index of a person
 3. Finding a better metric than IoU to find if a box is moving between frames
+
+# Annotation System
 
 **Downloading and processing video :**
 1. If a video is already available, place it in the main folder or download a video from YouTube(Y2 downloader or In-House application)

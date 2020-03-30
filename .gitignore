@@ -10,3 +10,4 @@ Data/
 *.mp4
 *.jpg
 Yolo-9000/
+*.pyc

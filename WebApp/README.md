@@ -246,7 +246,7 @@ all files :
 git ls-files | xargs wc -l
 
 only the grep (go) files :
-git ls-files | grep '\.go' | xargs wc -l
+git ls-files | grep '\.py' | xargs wc -l
 
 limits to 5 :
 git ls-files | grep '\.go' | xargs wc -l | head -n 5
