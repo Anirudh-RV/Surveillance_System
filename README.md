@@ -56,11 +56,13 @@ starter code :
 1. https://towardsdatascience.com/face-detection-in-2-minutes-using-opencv-python-90f89d7c0f81
 2. https://github.com/12345k/Two-Face-Comparison
 
+# Live Streaming
 **Streaming Output (Changes to this need to be made)**
 1. Using a flask backend to stream data from a security camera
 2. Displaying it live on a url
 3. Further changes and modifications can be made to the frames
 
+# Measuring IoU
 **Process of measuring IoU**
 1. Each bounding box with label : "people" is considered (Iterated through)
 2. The bounding box is checked with all the ground truths for IoU
@@ -73,6 +75,7 @@ starter code :
 7. The average of all the IoU's for each image is taken as the average IoU for the dataset (~400 images)
 8. check code in CheckIoU/iou.py for source code
 
+# Tracking People
 **Tracking People / Object Indexing :**
 1. Initialise detected people to 0
 2. When the processing of the frames start, each box that is detected by the yolo algorithm
@@ -117,11 +120,13 @@ person jumps between people
 index of a person
 3. Finding a better metric than IoU to find if a box is moving between frames
 
+# Video Download
 **Downloading and processing video :**
 1. If a video is already available, place it in the main folder or download a video from YouTube(Y2 downloader or In-House application)
 2. Run the dividevideo.py to split the video into frames at random intervals between 2-5 seconds (considering 30 fps)
 3. The divided frames will be available in the Dividedframes folder
 
+# Annotation System 
 **Annotation System :**
 1. The user signs up into the system by giving email,username,name and password
 2. Once the signUp is successful, the user is redirected to the upload page
