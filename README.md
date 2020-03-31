@@ -126,7 +126,7 @@ index of a person
 2. Run the dividevideo.py to split the video into frames at random intervals between 2-5 seconds (considering 30 fps)
 3. The divided frames will be available in the Dividedframes folder
 
-# Annotation System 
+# Annotation System
 **Annotation System :**
 1. The user signs up into the system by giving email,username,name and password
 2. Once the signUp is successful, the user is redirected to the upload page
@@ -156,7 +156,8 @@ system_architecture.jpeg
 1. For people label on dataset collected from mainly Indian sources : 0.3005834618310959
 2. Number of images in test data : 381
 
-#Steps to run the application (may involve downloading mongo,go libraries and setting up django environment)
+# How to run
+**Steps to run the application (may involve downloading mongo,go libraries and setting up django environment)**
 1. clone the git
 2. Download both weights from :
   1. https://drive.google.com/drive/folders/1pW4mKNOzOIf0Edyr4BppwnLpddCQ6Qch?usp=sharing
