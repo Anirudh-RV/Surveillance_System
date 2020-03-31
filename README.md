@@ -170,9 +170,15 @@ Go API: 8080
 2. go run main.go
 
 Django: 8000
-1. cd pythonbackend
-2. cd djangobackend
+1. cd django
+2. cd mlbackend
 3. python3 manage.py runserver
+
+Django: 9000
+1. cd django
+2. cd mlbackend
+3. python3 manage.py runserver <port-number> : 9000
+
 
 NodeServer: 4000
 1. cd NodeServer
