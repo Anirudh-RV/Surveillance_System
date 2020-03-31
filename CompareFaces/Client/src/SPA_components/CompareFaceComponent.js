@@ -79,7 +79,7 @@ getfacesfrommlbackend = (imageName) =>{
   console.log('url : '+url)
 
   var data = {'username':username,'imagename':imagename,'imageurl':url}
-  axios.post("http://localhost:8000/index/",data)
+  axios.post("http://localhost:9000/index/",data)
     .then(res => { // then print response status
       console.log(res)
       console.log(res['data'])
@@ -116,7 +116,7 @@ getfacesfrommlbackend = (imageName) =>{
 
 
 // using Api, add names of the images being uploaded to a database
-  addToBackendUsingApi = (files) =>{
+addToBackendUsingApi = (files) =>{
       var fileNames = "";
       for(var x =0; x<files.length-1;x++)
       {

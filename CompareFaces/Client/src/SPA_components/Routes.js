@@ -4,7 +4,6 @@ import Cookies from 'universal-cookie';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Home from './Home';
-import UploadMultipleFiles from './UploadMultipleFiles';
 import Signin from './Signin';
 import SignUp from './SignUp';
 import CustomRouting from './CustomRouting';
