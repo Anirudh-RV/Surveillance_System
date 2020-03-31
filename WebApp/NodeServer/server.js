@@ -18,6 +18,7 @@ app.use('/videos',express.static(__dirname+ '/public/Downloaded'))
 app.use('/img',express.static(path.join(__dirname, 'public/uploaded')));
 app.use('/file',express.static(path.join(__dirname,'public/file')));
 app.use('/CameraFeed',express.static(path.join(__dirname,'public/CameraFeed')));
+app.use('/comparefaces',express.static(path.join(__dirname,'public/Database')));
 
 app.use(
   bodyParser.urlencoded({
@@ -30,14 +31,20 @@ app.use(bodyParser.json())
 // for scaling it to multiple users, send user_id to the backend and save under a new folder with the user_id name.
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      var fs = require('fs');
-      var dir = 'public/uploaded/'+req.headers['username'];
-      if (!fs.existsSync(dir)){
-          fs.mkdirSync(dir);
+      console.log(req.headers['type'])
+      if(req.headers['type'] == 'CompareFaces'){
+        var dir = 'public/Database/';
       }
-      var dir = 'public/uploaded/'+req.headers['username']+'/images';
-      if (!fs.existsSync(dir)){
-          fs.mkdirSync(dir);
+      else{
+        var fs = require('fs');
+        var dir = 'public/uploaded/'+req.headers['username'];
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+        }
+        var dir = 'public/uploaded/'+req.headers['username']+'/images';
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+        }
       }
       cb(null,dir)
     },

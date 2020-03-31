@@ -60,6 +60,14 @@ SeeCameraFeed = () =>{
 })
 }
 
+CompareFaces = () => {
+  var userName = this.props.location.state.userName;
+  this.props.history.push({
+    pathname: '/CompareFaces',
+    state: {userName: this.props.location.state.userName}
+})
+
+}
 StartAnnotation = () =>{
   var userName = this.props.location.state.userName;
   this.props.history.push({
@@ -102,11 +110,16 @@ render() {
       <div className="SignIn">
         <form>
         <p class = "SignInHead">Surveillance System</p>
-        <p class = "SignUpHead">Some information about the system.</p>
         &nbsp;
           <FormGroup controlId="url" bsSize="large">
           <Button className="StartButton" block bsSize="large" onClick={this.SeeCameraFeed} type="button">
             See CameraFeed
+          </Button>
+          </FormGroup>
+
+          <FormGroup controlId="url" bsSize="large">
+          <Button className="StartButton" block bsSize="large" onClick={this.CompareFaces} type="button">
+            Check for person
           </Button>
           </FormGroup>
 
@@ -121,7 +134,7 @@ render() {
         </form>
       </div>
       <div className="SecondBoxSignIn" ref = {c => this.Info = c}>
-        <p className = "LinkToAccount"> Some LOGOUT option ?Click here&nbsp;
+        <p className = "LinkToAccount"> Click here when done &nbsp;
           <Link className="LinkToSignUp" onClick={this.Logout}>LOGOUT</Link>
         </p>
       </div>

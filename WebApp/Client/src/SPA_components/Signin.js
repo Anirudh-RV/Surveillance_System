@@ -37,7 +37,7 @@ handleSubmit = () =>{
       <h1 className = "AppName" >Surveillance System</h1>
       <div className="SignIn">
         <form onSubmit={this.handleSubmit}>
-        <p class = "SignInHead">NameOfApp</p>
+        <p class = "SignInHead">Surveillance System</p>
         <p class = "SignUpHead">Sign In for some usage for the customer.</p>
           <FormGroup controlId="email" bsSize="large">
             <FormControl

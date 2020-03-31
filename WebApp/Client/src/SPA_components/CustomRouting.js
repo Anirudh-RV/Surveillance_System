@@ -9,6 +9,8 @@ import Home from './Home';
 import DownloadVideoComponent from './DownloadVideoComponent';
 import WelcomePage from './WelcomePage';
 import CameraFeed from './CameraFeed';
+import CompareFaceComponent from './CompareFaceComponent';
+
 import { useLocation } from 'react-router-dom'
 
 class CustomRouting extends Component {
@@ -24,13 +26,14 @@ class CustomRouting extends Component {
           <div>
             <Switch />
               <Switch>
+              <Route path="/CompareFaces" component = {CompareFaceComponent} />
               <Route path="/upload" component={UploadMultipleFiles}/>
               <Route path="/EditPage" component={EditPage}/>
               <Route path="/DownloadVideoComponent" component={DownloadVideoComponent}/>
               <Route path="/WelcomePage" component={WelcomePage}/>
               <Route path = "/CameraFeed" component = {CameraFeed} />
               <Redirect to={{
-            pathname: '/CameraFeed',
+            pathname: '/WelcomePage',
             state: {userName:this.props.location.state.usercredentials}
         }}
 />

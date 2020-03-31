@@ -173,7 +173,7 @@ render() {
       <h1 className = "AppName" >Surveillance System</h1>
       <div className="Login">
         <form>
-        <p class = "SignInHead">NameOfApp</p>
+        <p class = "SignInHead">Surveillance System</p>
         <p class = "SignUpHead">Sign Up for some usage for the customer.</p>
 
         <FormGroup controlId="email" bsSize="large">

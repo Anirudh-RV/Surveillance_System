@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Player } from 'video-react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import IntroBar from './IntroBar'
+import NavigationBar from './NavigationBar'
 import "../../node_modules/video-react/dist/video-react.css";
 import logo from './logo.svg';
 import './App.css';
@@ -56,7 +56,7 @@ class CameraFeed extends Component {
   render() {
     return (
       <div className="App">
-      <IntroBar/>
+      <NavigationBar/>
       <h1>Check Camera feeds here :</h1>
       <section>
       <div className="columnLeftCamera">
