@@ -11,11 +11,28 @@
 8. tensorflow, numpy, keras for assisting the machine learning application
 9. matplotlib is being used for testing images (display of images)
 10. Vanilla Js for functions and bits of React code
-11. face_recognition library for comparing faces
-12. OpenCV haarcascades for detecting faces
-13. Flask for livestreaming (5000)
+11. face_recognition library for detecting faces
+12. face_recognition library for comparing faces
+13. OpenCV haarcascades for detecting faces
+14. Flask for livestreaming (5000)
 
 # How it works
+
+# DetectingAnamolyPeople
+A security system which helps in detecting people from a given set in real time
+
+**Explanation of module :**
+1. A person's photo can be uploaded using the web app provided through the frontend
+2. The user's have to be signed in to access this feature
+3. Once the picture has been uploaded, periodically cropjustface.py is run in order to update the database
+4. Once the database is updated, the person can be tracked
+5. The streamingserver i.e the Flask app which process the video and shows the output live process and tracks the person
+6. The person is first identified using the yolo algorithm
+7. Then from the cropped person's body, the face is retrieved using face_recognition library
+8. It is then compared with every other person in the database and checked for similarities
+9. If a similarity exists, then the person will be bound with a green box
+10. Else, the person will be bound with a red box
+
 
 # Recognising people
 The process of Recognising people is done with two separate steps :
@@ -185,10 +202,12 @@ Django: 9000
 2. cd mlbackend
 3. python3 manage.py runserver <port-number> : 9000
 
-
 NodeServer: 4000
 1. cd NodeServer
 2. node server.js
+
+Flask : 5000
+python3 Lstreamoutput.py
 
 **if npm build is failing, install by : npm install <absent library>**
 

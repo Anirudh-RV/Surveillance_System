@@ -22,6 +22,9 @@ import imutils
 import time
 import cv2
 
+'''
+http://192.168.1.8:5000/
+'''
 # To make sure stream is being read before initialising ML MODEL
 url = 'http://192.168.1.6:8080/'
 cap = cv2.VideoCapture(url)

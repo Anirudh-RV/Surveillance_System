@@ -5,6 +5,8 @@ https://www.pyimagesearch.com/2019/09/02/opencv-stream-video-to-web-browser-html
 autopep8 -i LstreamoutputTP.py
 python3 streamoutput.py
 
+http://192.168.1.8:5000/
+
 Streams live output to port 5000
 Implements :
 1. TextBox++
@@ -191,7 +193,7 @@ def video_feed():
 # check to see if this is the main thread of execution
 if __name__ == '__main__':
     args = {}
-    args["ip"] = "0.0.0.0"
+    args["ip"] = "192.168.1.8"
     args["port"] = "5000"
     args["frame_count"] = 15
     # start a thread that will perform motion detection
