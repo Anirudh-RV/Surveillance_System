@@ -33,7 +33,7 @@ Write function description here :
 
 */
 func GetClientOptions() *options.ClientOptions {
-  clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
+  clientOptions := options.Client().ApplyURI("mongodb://192.168.1.8:27017/")
   return clientOptions
 }
 

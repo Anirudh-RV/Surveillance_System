@@ -5,8 +5,6 @@ WORKDIR /API_Go
 
 ADD . /API_Go
 
-ENV MONGO_HOST "host.docker.internal"
-
 RUN go get github.com/gorilla/mux
 RUN go get github.com/gorilla/handlers
 RUN go get go.mongodb.org/mongo-driver/bson
