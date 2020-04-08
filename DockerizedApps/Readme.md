@@ -20,10 +20,13 @@ the user has to build the API_Go container by changing the IP Address to their C
   b. HandleImages/ImageFunc.go
 
 # To run from docker  :(Build Inside respective folders)
+
 **Start MongoDB**
 1. Local: docker run -d -p 27017-27019:27017-27019 --name mongodb mongo
-(or)
-1. Local: docker run -d -p 27017-27019:27017-27019 --name <CONTAINER ID> mongo
+
+*if error occurs saying container already running*
+
+1. Local: docker run -d -p 27017-27019:27017-27019 --name CONTAINER ID mongo
 
 2. Important : Make sure mongo is running on <ip-address>:27017 before running GO API
 
