@@ -8,12 +8,26 @@ https://medium.com/travis-on-docker/how-to-dockerize-your-go-golang-app-542af15c
 2. Need to check with Django/CompareDjango/CropFaces/LiveStreamingOutput/PeopleAnomalyDetection
 3. Need to make sure that the dockerized application still functions the way it is supposed with
 all the integrations done
-4. Verify all features worked on are avaiable in the final version 
-# To run from docker  :
-**To build**
-1. docker build -t anirudhrv1234/goapi .
+4. Verify all features worked on are avaiable in the final version
 
-**To run GO API (ERROR : connect to mongodb)**
+
+**Important**
+1. lsof -P | grep ':4000' | awk '{print $2}' | xargs kill -9
+
+2. Problem with API_Go : Until a static IP Address for the mongodb server is not found, for each system
+the user has to build the API_Go container by changing the IP Address to their Computer IP in
+  a. HandleUsers/UserFunc.go
+  b. HandleImages/ImageFunc.go
+
+# To run from docker  :(Build Inside respective folders)
+**Start MongoDB**
+1. Local: docker run -d -p 27017-27019:27017-27019 --name mongodb mongo
+(or)
+1. Local: docker run -d -p 27017-27019:27017-27019 --name <CONTAINER ID> mongo
+
+2. Important : Make sure mongo is running on <ip-address>:27017 before running GO API
+
+**To run GO API**
 1. To build: docker build -t anirudhrv1234/goapi .
 
 2. Remote: docker run --rm -it -p 8080:8080 anirudhrv1234/goapi
@@ -21,11 +35,12 @@ all the integrations done
 3. Local: docker run --rm -p 8080:8080 anirudhrv1234/goapi
 
 **To run NodeServer (Node JS)**
-
 1. Local: docker run -p 4000:4000 anirudhrv1234/nodeserver
 
 **To run Client (React JS)**
+1. To build: docker build -t anirudhrv1234/reactjs .
 
+2. Local: docker run -p 3000:3000 anirudhrv1234/reactjs
 
 #Commands to run a Docker app (GENERAL):
 

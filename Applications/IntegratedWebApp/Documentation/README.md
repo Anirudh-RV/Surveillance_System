@@ -87,7 +87,7 @@ NodeServer: 4000
 
 General guide :
 To Kill Ports  :
-lsof -P | grep ':3000' | awk '{print $2}' | xargs kill -9
+lsof -P | grep ':4000' | awk '{print $2}' | xargs kill -9
 
 Reactjs :
 1. Figure this out or copy paste previous projects

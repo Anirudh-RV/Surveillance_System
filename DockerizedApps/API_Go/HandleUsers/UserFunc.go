@@ -5,6 +5,8 @@ import (
     "unsafe"
     "reflect"
     "context"
+    "fmt"
+    "net"
 
     // MongoDB drivers
     "go.mongodb.org/mongo-driver/mongo"
@@ -32,11 +34,34 @@ type Image_Names struct {
 Write function description here :
 
 */
+func GetLocalIP() string {
+    addrs, err := net.InterfaceAddrs()
+    if err != nil {
+        return ""
+    }
+    for _, address := range addrs {
+        // check the address type and if it is not a loopback the display it
+        if ipnet, ok := address.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
+            if ipnet.IP.To4() != nil {
+                return ipnet.IP.String()
+            }
+        }
+    }
+    return ""
+}
+
+
+/*
+
+Write function description here :
+
+*/
 func GetClientOptions() *options.ClientOptions {
+  ipAddress := GetLocalIP()
+  fmt.Println("Connecting to : "+ipAddress)
   clientOptions := options.Client().ApplyURI("mongodb://192.168.1.8:27017/")
   return clientOptions
 }
-
 /*
 
 Write function description here :
