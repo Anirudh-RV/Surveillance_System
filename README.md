@@ -1,5 +1,21 @@
 # Introduction to Surveillance_System
 
+# NOTE - Main App functions
+1. Compare Face Frontend
+2. Download Youtube Video and divide it
+3. Annotation function
+4. Seeing Live Camera Feed
+
+# NOTE - Functions with Django/Flask
+1. Running yolo/Textbox++ for IoU in Django (Port:8000)
+2. Running Yolo-indexing /Textbox++/ Integrated Yolo-Indexing and Textbox++/ yolo-indexing-peoplematching on Flask (Port:5000)
+3. Running Compare Faces in the backend in Django (Port:9000)
+
+# NOTE
+1. yolo-indexing and textbox++ are already integrated, add peoplematching component to obtain final flask application
+2. Django and CompareDjango are run on 8000 and 9000 ports
+
+3. Finally, the frontend should function and backends with 8000,9000 and 5000 ports should function
 # Technologies used
 1. ReactJs for Frontend (3000)
 2. NodeJs for Backend (4000)

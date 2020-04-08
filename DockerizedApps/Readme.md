@@ -3,23 +3,28 @@ https://docs.docker.com/docker-for-mac/
 https://docs.docker.com/compose/gettingstarted/
 https://medium.com/travis-on-docker/how-to-dockerize-your-go-golang-app-542af15c27a2
 
+# Important INFO :
+1. Once the frontend/Webapp is comlpetely dockerized
+2. Need to check with Django/CompareDjango/CropFaces/LiveStreamingOutput/PeopleAnomalyDetection
+3. Need to make sure that the dockerized application still functions the way it is supposed with
+all the integrations done
+4. Verify all features worked on are avaiable in the final version 
 # To run from docker  :
 **To build**
 1. docker build -t anirudhrv1234/goapi .
 
-**To run mongo locally**
-1.
-
 **To run GO API (ERROR : connect to mongodb)**
-1. Remote: docker run --rm -it -p 8080:8080 anirudhrv1234/goapi
+1. To build: docker build -t anirudhrv1234/goapi .
 
-2. Local: docker run --rm -p 8080:8080 anirudhrv1234/goapi
+2. Remote: docker run --rm -it -p 8080:8080 anirudhrv1234/goapi
+
+3. Local: docker run --rm -p 8080:8080 anirudhrv1234/goapi
 
 **To run NodeServer (Node JS)**
 
 1. Local: docker run -p 4000:4000 anirudhrv1234/nodeserver
 
-**To run Client (React JS) integrate completely before dockerizing**
+**To run Client (React JS)**
 
 
 #Commands to run a Docker app (GENERAL):
