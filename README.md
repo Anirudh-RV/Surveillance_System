@@ -1,5 +1,18 @@
 # Introduction to Surveillance_System
 
+# Note - Main features
+1. Stream Anamoly Detection - People (Flask: 5000)
+2. Annotation IoU check (Django: 8000)
+3. Compare Faces (Django: 9000)
+4. Stream live yolo-indexing (Flask: 7000)
+5. Stream live Textbox++ (Flask: 5080)
+6. Stream live yolo-indexing with Textbox++/ Integrated (Flask: 6000)
+7. Web Application as User Interface ( :3000)
+8. Go API ( :8080)
+9. MongoDB ( :27017)
+10. Dockerized containers - ReactJS, NodeJS, Go API
+11. CropFace to run in backend using Cron
+
 # NOTE - Main App functions
 1. Compare Face Frontend
 2. Download Youtube Video and divide it

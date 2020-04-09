@@ -14,6 +14,7 @@ RUN npm install express
 RUN npm install express-zip
 RUN npm install youtube-dl
 RUN npm install zip-folder
+RUN npm install serve-index
 RUN npm i multer
 
 # If you are building your code for production

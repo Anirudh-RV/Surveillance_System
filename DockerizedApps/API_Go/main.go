@@ -24,7 +24,7 @@ func main() {
     r.HandleFunc("/", RestMethods.NotFound) // 89
 
     r.HandleFunc("/getimages", HandleImages.GetImages).Methods(http.MethodPost) //97
-    r.HandleFunc("/insertimagedata",HandleImages.AddUserToDatabase).Methods(http.MethodPost) // 149
+    r.HandleFunc("/insertimagedata",HandleImages.AddImagesToDataBase).Methods(http.MethodPost) // 149
 
     r.HandleFunc("/deleteuser",HandleUsers.DeleteUser).Methods(http.MethodPost) // 197
     r.HandleFunc("/saveastextfile",HandleUsers.SaveAsTextFile).Methods(http.MethodPost) // 235

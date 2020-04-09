@@ -13,7 +13,7 @@ import (
 Write function description here :
 
 */
-func AddUserToDatabase(w http.ResponseWriter, r *http.Request) {
+func AddImagesToDataBase(w http.ResponseWriter, r *http.Request) {
   w.Header().Set("Content-Type", "application/json")
   w.WriteHeader(http.StatusCreated)
 

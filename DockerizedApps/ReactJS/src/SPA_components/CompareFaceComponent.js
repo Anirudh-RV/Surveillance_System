@@ -117,18 +117,22 @@ getfacesfrommlbackend = (imageName) =>{
 
 // using Api, add names of the images being uploaded to a database
 addToBackendUsingApi = (files) =>{
-      var fileNames = "";
+      var sendToDjangoBackend = "";
+      var fileNames = "CompareFaceDatabase,";
       for(var x =0; x<files.length-1;x++)
       {
         fileNames = fileNames +files[x].name+ ",";
+        sendToDjangoBackend = sendToDjangoBackend + files[x].name+ ",";
       }
       fileNames = fileNames + files[files.length-1].name;
+      sendToDjangoBackend = sendToDjangoBackend + files[files.length-1].name;
+      console.log("filename : "+fileNames)
       // api call
       axios.post("http://localhost:8080/insertimagedata",fileNames)
         .then(res => { // then print response status
           console.log(res)
           console.log('Sending to getfacesfrommlbackend')
-          this.getfacesfrommlbackend(fileNames)
+          this.getfacesfrommlbackend(sendToDjangoBackend)
         })
         .catch(err => { // then print response status
         console.log(err)

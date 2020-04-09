@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 var zip = require('express-zip');
 const child_process = require('child_process');
 var zipFolder = require('zip-folder');
+var serveIndex = require('serve-index');
 var port = 4000;
 
 app.use(cors())
@@ -19,7 +20,7 @@ app.use('/img',express.static(path.join(__dirname, 'public/uploaded')));
 app.use('/file',express.static(path.join(__dirname,'public/file')));
 app.use('/CameraFeed',express.static(path.join(__dirname,'public/CameraFeed')));
 app.use('/comparefaces',express.static(path.join(__dirname,'public/Database')));
-
+app.use('/listimages', serveIndex(__dirname + 'public/Database'));
 app.use(
   bodyParser.urlencoded({
     extended: true

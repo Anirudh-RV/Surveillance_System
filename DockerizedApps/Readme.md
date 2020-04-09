@@ -10,20 +10,27 @@ https://medium.com/travis-on-docker/how-to-dockerize-your-go-golang-app-542af15c
 all the integrations done
 4. Verify all features worked on are avaiable in the final version
 
+**Important**
+1. Try using nginx for serving static folder
 
 **Important**
-1. lsof -P | grep ':4000' | awk '{print $2}' | xargs kill -9
+1. docker stop CONTAINERID
 
-2. Problem with API_Go : Until a static IP Address for the mongodb server is not found, for each system
+2. lsof -P | grep ':4000' | awk '{print $2}' | xargs kill -9
+
+3. Problem with API_Go : Until a static IP Address for the mongodb server is not found, for each system
 the user has to build the API_Go container by changing the IP Address to their Computer IP in
   a. HandleUsers/UserFunc.go
   b. HandleImages/ImageFunc.go
 
 # To run from docker  :(Build Inside respective folders)
+1. 1. To build: docker build -t **-Name-** .
+
 
 **Start MongoDB**
 1. Local: docker run -d -p 27017-27019:27017-27019 --name mongodb mongo
 
+cd74ed0cd946717155f47b95bcd85bcc8371a561a8f672c8e2506555c20d8ac4
 *if error occurs saying container already running*
 
 1. Local: docker run -d -p 27017-27019:27017-27019 --name CONTAINER ID mongo
@@ -38,7 +45,9 @@ the user has to build the API_Go container by changing the IP Address to their C
 3. Local: docker run --rm -p 8080:8080 anirudhrv1234/goapi
 
 **To run NodeServer (Node JS)**
-1. Local: docker run -p 4000:4000 anirudhrv1234/nodeserver
+1. To build: docker build -t anirudhrv/nodeserver .
+
+2. Local: docker run -p 4000:4000 anirudhrv1234/nodeserver
 
 **To run Client (React JS)**
 1. To build: docker build -t anirudhrv1234/reactjs .
