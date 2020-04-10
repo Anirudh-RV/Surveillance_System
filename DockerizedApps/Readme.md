@@ -10,6 +10,12 @@ https://medium.com/travis-on-docker/how-to-dockerize-your-go-golang-app-542af15c
 all the integrations done
 4. Verify all features worked on are avaiable in the final version
 
+# For localtunnel (Making local server port publicly avaiable):
+
+1. brew install ruby
+2. echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.bash_profile
+3. gem install localtunnel
+4. lt -h "http://serverless.social" -p <port number>
 **Important**
 1. Try using nginx for serving static folder
 
@@ -28,6 +34,8 @@ the user has to build the API_Go container by changing the IP Address to their C
 
 
 **Start MongoDB**
+Using Mongo Atlas for cloud monogoDB
+1. https://cloud.mongodb.com/v2/5e900ec2a7d1747f28c16087#metrics/replicaSet/5e900fc72e84e918f3bbb59c/explorer/GoDB/UserData/find
 1. Local: docker run -d -p 27017-27019:27017-27019 --name mongodb mongo
 
 cd74ed0cd946717155f47b95bcd85bcc8371a561a8f672c8e2506555c20d8ac4

@@ -59,7 +59,7 @@ Write function description here :
 func GetClientOptions() *options.ClientOptions {
   ipAddress := GetLocalIP()
   fmt.Println("Connecting to : "+ipAddress)
-  clientOptions := options.Client().ApplyURI("mongodb://192.168.1.8:27017/")
+  clientOptions := options.Client().ApplyURI("mongodb+srv://AnirudhRV:anirudhrv@cluster0-q3hr9.mongodb.net/test?retryWrites=true&w=majority")
   return clientOptions
 }
 /*
