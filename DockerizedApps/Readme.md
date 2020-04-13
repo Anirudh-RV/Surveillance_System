@@ -8,6 +8,7 @@ https://hostadvice.com/how-to/how-to-use-docker-containers-with-aws-ec2/
 <br />**Important :**
 <br />
 update atlas with the public IP of Go API for Permissions
+<br />
 **S3 - ReactJS**
 1. Create bucket
 2. Allow public access
@@ -27,6 +28,7 @@ update atlas with the public IP of Go API for Permissions
 
 <br />
 **NOTE :**
+<br />
 The \ in the bucket policy is ignored before asterisk and angle brackets of BUCKET-NAME
 4. build the static website :
 npm run build
@@ -35,6 +37,7 @@ npm run build
 <br />
 **ERRORS**
 1. Problem with refreshing error occurs (ADD ROUTES)
+<br />
 2. Problem with downloading files (Stop ADBLOCK ON WEBSITE)
 
 **EC2 - GO API IP:GET IP WHEN INSTANCE IS RUNNING**
