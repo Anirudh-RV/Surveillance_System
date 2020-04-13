@@ -30,9 +30,12 @@ update atlas with the public IP of Go API for Permissions
 **NOTE :**
 <br />
 The \ in the bucket policy is ignored before asterisk and angle brackets of BUCKET-NAME
+<br />
 4. build the static website :
 npm run build
+<br />
 5. Copy and paste the contents of build/ into S3
+<br />
 6. Check the index.html file for Link
 <br />
 **ERRORS**
