@@ -141,3 +141,18 @@ cd74ed0cd946717155f47b95bcd85bcc8371a561a8f672c8e2506555c20d8ac4
 
 **To delete images**
 1. docker system prune
+
+<br />
+**RAW**
+{
+   "Version": "2012-10-17",
+  "Statement":[
+  {
+   "Sid":"AddPerm",
+    "Effect":"Allow",
+    "Principal": "*",
+    "Action":["s3:GetObject"],
+    "Resource":["arn:aws:s3:::<BUCKET-NAME>/*"]
+   }
+  ]
+}
