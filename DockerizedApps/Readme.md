@@ -9,7 +9,7 @@ https://hostadvice.com/how-to/how-to-use-docker-containers-with-aws-ec2/
 1. Create bucket
 2. Allow public access
 3. Change bucket policy to : (Permissions/bucketpolicy)<br />
-{
+{<br />
 &nbsp;&nbsp;  "Version": "2012-10-17",<br />
 &nbsp;&nbsp;"Statement":[<br />
 &nbsp;&nbsp;{<br />
