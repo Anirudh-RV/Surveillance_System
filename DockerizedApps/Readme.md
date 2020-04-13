@@ -5,6 +5,9 @@ https://medium.com/travis-on-docker/how-to-dockerize-your-go-golang-app-542af15c
 https://hostadvice.com/how-to/how-to-use-docker-containers-with-aws-ec2/
 
 # AWS COMMANDS
+<br />**Important :**
+<br />
+update atlas with the public IP of Go API for Permissions
 **S3 - ReactJS**
 1. Create bucket
 2. Allow public access
@@ -21,6 +24,7 @@ https://hostadvice.com/how-to/how-to-use-docker-containers-with-aws-ec2/
 &nbsp;&nbsp;    }<br />
 &nbsp;  ]<br />
 }<br />
+
 <br />
 **NOTE :**
 The \ in the bucket policy is ignored before asterisk and angle brackets of BUCKET-NAME
@@ -28,6 +32,10 @@ The \ in the bucket policy is ignored before asterisk and angle brackets of BUCK
 npm run build
 5. Copy and paste the contents of build/ into S3
 6. Check the index.html file for Link
+<br />
+**ERRORS**
+1. Problem with refreshing error occurs (ADD ROUTES)
+2. Problem with downloading files (Stop ADBLOCK ON WEBSITE)
 
 **EC2 - GO API IP:GET IP WHEN INSTANCE IS RUNNING**
 1. Create an EC2 instance and allow HTTP:80 connections in the security options
@@ -38,8 +46,13 @@ npm run build
 6. sudo service docker start
 7. sudo usermod -a -G docker ec2-user
 8. exit
-9. ssh -i goapikey.pem ec2-user@<IP-Address>
+9. ssh -i goapikey.pem ec2-user@54.197.42.159
 10. docker run -p 80:8080 anirudhrv1234/goapi
+
+To run : **Update atlas with the public key for Permissions**
+1. ssh -i goapikey.pem ec2-user@<IP-Address>
+2. sudo service docker start
+3. docker run -p 80:8080 anirudhrv1234/goapi
 
 **EC2 - NodeServer IP: GET IP WHEN INSTANCE IS RUNNING**
 1. Create an EC2 instance and allow HTTP:80 connections in the security options
@@ -53,11 +66,17 @@ npm run build
 9. ssh -i Detectanamolyoutputvideo.pem ec2-user@<IP-Address>
 10. docker run -p 80:4000 anirudhrv1234/nodeserver
 
+To run :
+1. ssh -i Detectanamolyoutputvideo.pem ec2-user@35.170.249.159
+2. sudo service docker start
+3. docker run -p 80:4000 anirudhrv1234/nodeserver
+
 # For localtunnel (Making local server port publicly avaiable):
 1. brew install ruby
 2. echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.bash_profile
 3. gem install localtunnel
 4. lt -h "http://serverless.social" -p <port number>
+5. Update the allowed hosts in Django before running
 
 # DOCKER
 **RUN THE DOCKER COMMAND TO RUN CONTAINER**

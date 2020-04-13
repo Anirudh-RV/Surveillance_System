@@ -17,8 +17,8 @@ componentDidMount(){
 this.accountexists = false;
 this.userNameExists = false;
 this.handleEmail.bind(this);
-this.nodeserverurl = ""
-this.goapiurl = ""
+this.nodeserverurl = "http://35.170.249.159"
+this.goapiurl = "http://54.197.42.159"
 }
 
 //addusertodatabase

@@ -11,8 +11,8 @@ import Cookies from 'universal-cookie';
 class Signin extends Component {
 //TODO : ADD Footer information
 handleSubmit = () =>{
-  this.nodeserverurl = ""
-  this.goapiurl = ""
+  this.nodeserverurl = "http://35.170.249.159"
+  this.goapiurl = "http://54.197.42.159"
   var data = this.usercredentials.value+","+this.Password.value
   axios.post(this.goapiurl+"/authorizeuser",data)
     .then(res => { // then print response status

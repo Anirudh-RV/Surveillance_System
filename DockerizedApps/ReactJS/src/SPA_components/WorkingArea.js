@@ -10,9 +10,9 @@ constructor(){
   this.state= {
     index:0,
   }
-  this.nodeserverurl = ""
-  this.goapiurl = ""
-  this.pythonbackendurl = ""
+  this.nodeserverurl = "http://35.170.249.159"
+  this.goapiurl = "http://54.197.42.159"
+  this.pythonbackendurl = "" // Annotation Backend
 }
 
 onButton = () => {
@@ -199,7 +199,8 @@ downloadfiles = () =>{
       .then(res => { // then print response status
         console.log(res)
         // after creating the zip file, now download
-        window.open(this.nodeserverurl+'/img/'+this.props.name+'.zip');
+        window.open(this.nodeserverurl+'/img/'+this.props.name+'.zip', '_blank');
+
       })
       .catch(err => {
       // then print response status
@@ -267,7 +268,7 @@ render() {
           <button className="buttonclass" onClick={this.getyolomloutput}>CHECK YOLO ML OUTPUT</button>
 
           <button className="buttonclass" onClick={this.downloadfiles}>DOWNLOAD DATA</button>
-          <button className="buttonclass" onClick={this.downloadallfiles}>DOWNLOAD ALL</button>
+          <button className="buttonclass" onClick={this.downloadallfiles}>DOWNLOAD ALL-Please disable adblock for download</button>
         </div>
         <p hidden ref = {c =>this.outputdiv = c}>
         </p>

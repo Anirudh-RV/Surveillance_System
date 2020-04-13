@@ -14,9 +14,9 @@ class CompareFaceComponent extends Component {
         loaded:0,
         index:0,
       }
-      this.nodeserverurl = ""
-      this.goapiurl = ""
-      this.pythonbackendurl
+      this.nodeserverurl = "http://35.170.249.159"
+      this.goapiurl = "http://54.197.42.159"
+      this.pythonbackendurl = "http://itchy-puma-26.serverless.social"
   }
 
 Logout = () =>{

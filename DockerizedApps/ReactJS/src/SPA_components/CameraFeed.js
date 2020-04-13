@@ -6,7 +6,6 @@ import "../../node_modules/video-react/dist/video-react.css";
 import logo from './logo.svg';
 import './App.css';
 import { FormControl} from "react-bootstrap";
-import StreamingFile from './StreamingFile'
 
 class CameraFeed extends Component {
   constructor(props, context) {
@@ -20,8 +19,8 @@ class CameraFeed extends Component {
     this.handleValueChange = this.handleValueChange.bind(this);
     this.updatePlayerInfo = this.updatePlayerInfo.bind(this);
     this.count = 0;
-    this.nodeserverurl = ""
-    this.goapiurl = ""
+    this.nodeserverurl = "http://35.170.249.159"
+    this.goapiurl = "http://54.197.42.159"
   }
 
   componentDidUpdate(prevProps, prevState) {
