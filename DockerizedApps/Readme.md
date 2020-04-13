@@ -15,9 +15,9 @@ https://hostadvice.com/how-to/how-to-use-docker-containers-with-aws-ec2/
     {
       "Sid":"AddPerm",
       "Effect":"Allow",
-      "Principal": "*",
+      "Principal": "\*",
       "Action":["s3:GetObject"],
-      "Resource":["arn:aws:s3:::<BUCKET-NAME>/*"]
+      "Resource":["arn:aws:s3:::<BUCKET-NAME>/\*"]
     }
   ]
 }
@@ -27,27 +27,28 @@ npm run build
 6. Check the index.html file for Link
 
 **EC2 - GO API IP:GET IP WHEN INSTANCE IS RUNNING**
-chmod 400 goapikey.pem
-ssh -i goapikey.pem ec2-user@<IP-Address>
-sudo yum update -y
-sudo yum install -y docker
-sudo service docker start
-sudo usermod -a -G docker ec2-user
-exit
-ssh -i goapikey.pem ec2-user@<IP-Address>
-docker run -p 80:8080 anirudhrv1234/goapi
+1. Create an EC2 instance and allow HTTP:80 connections in the security options
+2. chmod 400 goapikey.pem
+3. ssh -i goapikey.pem ec2-user@<IP-Address>
+4. sudo yum update -y
+5. sudo yum install -y docker
+6. sudo service docker start
+7. sudo usermod -a -G docker ec2-user
+8. exit
+9. ssh -i goapikey.pem ec2-user@<IP-Address>
+10. docker run -p 80:8080 anirudhrv1234/goapi
 
 **EC2 - NodeServer IP: GET IP WHEN INSTANCE IS RUNNING**
-chmod 400 Detectanamolyoutputvideo.pem
-ssh -i Detectanamolyoutputvideo.pem ec2-user@<IP-Address>
-sudo yum update -y
-sudo yum install -y docker
-sudo service docker start
-sudo usermod -a -G docker ec2-user
-exit
-ssh -i Detectanamolyoutputvideo.pem ec2-user@<IP-Address>
-docker info
-docker run -p 80:4000 anirudhrv1234/nodeserver
+1. Create an EC2 instance and allow HTTP:80 connections in the security options
+2. chmod 400 Detectanamolyoutputvideo.pem
+3. ssh -i Detectanamolyoutputvideo.pem ec2-user@<IP-Address>
+4. sudo yum update -y
+5. sudo yum install -y docker
+6. sudo service docker start
+7. sudo usermod -a -G docker ec2-user
+8. exit
+9. ssh -i Detectanamolyoutputvideo.pem ec2-user@<IP-Address>
+10. docker run -p 80:4000 anirudhrv1234/nodeserver
 
 # For localtunnel (Making local server port publicly avaiable):
 1. brew install ruby

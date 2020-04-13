@@ -30,6 +30,7 @@
 
 3. Finally, the frontend should function and backends with 8000,9000 and 5000 ports should function
 # Technologies used
+
 1. ReactJs for Frontend (3000)
 2. NodeJs for Backend (4000)
 3. Django to run the Machine learning algorithms in the background (8000)
@@ -45,33 +46,47 @@
 13. OpenCV haarcascades for detecting faces
 14. Flask for livestreaming (5000)
 15. Docker
+16. AWS EC2
+17. AWS S3
+18. Mongo Atlas
+19. Localtunnel
 
 # How it works
 
-# Dockerized Apps :
-
-**Resources :**
+Resources :
 https://docs.docker.com/docker-for-mac/
 https://docs.docker.com/compose/gettingstarted/
 https://medium.com/travis-on-docker/how-to-dockerize-your-go-golang-app-542af15c27a2
 
-**Important INFO :**
+# Important INFO :
 1. Once the frontend/Webapp is comlpetely dockerized
 2. Need to check with Django/CompareDjango/CropFaces/LiveStreamingOutput/PeopleAnomalyDetection
 3. Need to make sure that the dockerized application still functions the way it is supposed with
 all the integrations done
 4. Verify all features worked on are avaiable in the final version
 
+# For localtunnel (Making local server port publicly avaiable):
+
+1. brew install ruby
+2. echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.bash_profile
+3. gem install localtunnel
+4. lt -h "http://serverless.social" -p <port number>
+**Important**
+1. Try using nginx for serving static folder
 
 **Important**
-1. lsof -P | grep ':4000' | awk '{print $2}' | xargs kill -9
+1. docker stop CONTAINERID
 
-2. Problem with API_Go : Until a static IP Address for the mongodb server is not found, for each system
+2. lsof -P | grep ':4000' | awk '{print $2}' | xargs kill -9
+
+3. Problem with API_Go : Until a static IP Address for the mongodb server is not found, for each system
 the user has to build the API_Go container by changing the IP Address to their Computer IP in
   a. HandleUsers/UserFunc.go
   b. HandleImages/ImageFunc.go
 
-**To run from docker  :(Build Inside respective folders)**
+# To run from docker  :(Build Inside respective folders)
+1. 1. To build: docker build -t **-Name-** .
+
 
 **Start MongoDB**
 1. Local: docker run -d -p 27017-27019:27017-27019 --name mongodb mongo
