@@ -8,18 +8,18 @@ https://hostadvice.com/how-to/how-to-use-docker-containers-with-aws-ec2/
 **S3 - ReactJS**
 1. Create bucket
 2. Allow public access
-3. Change bucket policy to : (Permissions/bucketpolicy)
+3. Change bucket policy to : (Permissions/bucketpolicy)<br />
 {
-  "Version": "2012-10-17",<br />
-  "Statement":[<br />
-    {<br />
-      "Sid":"AddPerm",<br />
-      "Effect":"Allow",<br />
-      "Principal": "\*",<br />
-      "Action":["s3:GetObject"],<br />
-      "Resource":["arn:aws:s3:::\<BUCKET-NAME\>/\*"]<br />
-    }<br />
-  ]<br />
+&nbsp;&nbsp;  "Version": "2012-10-17",<br />
+&nbsp;&nbsp;"Statement":[<br />
+&nbsp;&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;"Sid":"AddPerm",<br />
+&nbsp;&nbsp;&nbsp;      "Effect":"Allow",<br />
+&nbsp;&nbsp;&nbsp;      "Principal": "\*",<br />
+&nbsp;&nbsp;&nbsp;      "Action":["s3:GetObject"],<br />
+&nbsp;&nbsp;&nbsp;      "Resource":["arn:aws:s3:::\<BUCKET-NAME\>/\*"]<br />
+&nbsp;&nbsp;    }<br />
+&nbsp;  ]<br />
 }<br />
 <br />
 **NOTE :**
