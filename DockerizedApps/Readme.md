@@ -17,7 +17,7 @@ https://hostadvice.com/how-to/how-to-use-docker-containers-with-aws-ec2/
       "Effect":"Allow",
       "Principal": "\*",
       "Action":["s3:GetObject"],
-      "Resource":["arn:aws:s3:::<BUCKET-NAME>/\*"]
+      "Resource":["arn:aws:s3:::\<BUCKET-NAME\>/\*"]
     }
   ]
 }
