@@ -21,6 +21,8 @@ https://hostadvice.com/how-to/how-to-use-docker-containers-with-aws-ec2/
     }
   ]
 }
+**NOTE :**
+The \ in the bucket policy is ignored before asterisk and angle brackets of BUCKET-NAME 
 4. build the static website :
 npm run build
 5. Copy and paste the contents of build/ into S3
