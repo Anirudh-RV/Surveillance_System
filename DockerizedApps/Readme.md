@@ -10,19 +10,20 @@ https://hostadvice.com/how-to/how-to-use-docker-containers-with-aws-ec2/
 2. Allow public access
 3. Change bucket policy to : (Permissions/bucketpolicy)
 {
-  "Version": "2012-10-17",
-  "Statement":[
-    {
-      "Sid":"AddPerm",
-      "Effect":"Allow",
-      "Principal": "\*",
-      "Action":["s3:GetObject"],
-      "Resource":["arn:aws:s3:::\<BUCKET-NAME\>/\*"]
-    }
-  ]
-}
+  "Version": "2012-10-17",<br />
+  "Statement":[<br />
+    {<br />
+      "Sid":"AddPerm",<br />
+      "Effect":"Allow",<br />
+      "Principal": "\*",<br />
+      "Action":["s3:GetObject"],<br />
+      "Resource":["arn:aws:s3:::\<BUCKET-NAME\>/\*"]<br />
+    }<br />
+  ]<br />
+}<br />
+<br />
 **NOTE :**
-The \ in the bucket policy is ignored before asterisk and angle brackets of BUCKET-NAME 
+The \ in the bucket policy is ignored before asterisk and angle brackets of BUCKET-NAME
 4. build the static website :
 npm run build
 5. Copy and paste the contents of build/ into S3
