@@ -11,25 +11,28 @@ import {FormGroup, FormControl} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
 class DownloadVideoComponent extends Component {
-
+  
 componentDidMount(){
 // OnLoad function
 // if counter exceeds 5, then stop process
 this.heading.innerHTML = this.props.location.state.userName+"</br>Start Your Data Science Jounrney with AppName";
 this.buttonpressed = 0;
 this.counter = 0;
+this.nodeserverurl = ""
+this.goapiurl = ""
+this.pythonbackendurl = ""
 }
 
 dividetheframes = () =>{
   var username = this.props.location.state.userName
   var videoname =  this.videoname.value
   var imagetype = 'jpeg'
-  var videourl = 'http://localhost:4000/videos/'+username+'/downloads/'+videoname+'.mp4'
+  var videourl = this.nodeserverurl+'/videos/'+username+'/downloads/'+videoname+'.mp4'
   var low = '1'
   var high = '5'
   var data = {'username':username,'videoname':videoname,'videourl':videourl,'imagetype':imagetype,'low':low,'high':high}
   console.log("inside the testdjangoapi function : ")
-  axios.post("http://127.0.0.1:8000/dividetheframes/",data)
+  axios.post(this.pythonbackendurl+"/dividetheframes/",data)
     .then(res => { // then print response status
       //toast.success('upload success')
       console.log("API message : ")
@@ -64,7 +67,7 @@ gotoeditpage = () =>{
 
 handleSubmit = () =>{
   this.Message.innerHTML = "The process may take a few minutes..."
-  axios.post("http://localhost:4000/download/",{
+  axios.post(this.nodeserverurl+"/download/",{
     username : this.props.location.state.userName,
     videoname : this.videoname.value,
     videourl : this.videourl.value,

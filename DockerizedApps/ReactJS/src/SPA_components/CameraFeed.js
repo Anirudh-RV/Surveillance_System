@@ -20,6 +20,8 @@ class CameraFeed extends Component {
     this.handleValueChange = this.handleValueChange.bind(this);
     this.updatePlayerInfo = this.updatePlayerInfo.bind(this);
     this.count = 0;
+    this.nodeserverurl = ""
+    this.goapiurl = ""
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -38,7 +40,7 @@ class CameraFeed extends Component {
   updatePlayerInfo() {
     const { inputVideoUrl } = this.state;
     this.setState({
-      playerSource:'http://localhost:4000/CameraFeed/'+inputVideoUrl
+      playerSource:this.nodeserverurl+'/CameraFeed/'+inputVideoUrl
     });
   }
 

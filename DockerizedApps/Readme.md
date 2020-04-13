@@ -2,34 +2,78 @@ Resources :
 https://docs.docker.com/docker-for-mac/
 https://docs.docker.com/compose/gettingstarted/
 https://medium.com/travis-on-docker/how-to-dockerize-your-go-golang-app-542af15c27a2
+https://hostadvice.com/how-to/how-to-use-docker-containers-with-aws-ec2/
 
-# Important INFO :
-1. Once the frontend/Webapp is comlpetely dockerized
-2. Need to check with Django/CompareDjango/CropFaces/LiveStreamingOutput/PeopleAnomalyDetection
-3. Need to make sure that the dockerized application still functions the way it is supposed with
-all the integrations done
-4. Verify all features worked on are avaiable in the final version
+# AWS COMMANDS
+**S3 - ReactJS**
+1. Create bucket
+2. Allow public access
+3. Change bucket policy to : (Permissions/bucketpolicy)
+{
+  "Version": "2012-10-17",
+  "Statement":[
+    {
+      "Sid":"AddPerm",
+      "Effect":"Allow",
+      "Principal": "*",
+      "Action":["s3:GetObject"],
+      "Resource":["arn:aws:s3:::<BUCKET-NAME>/*"]
+    }
+  ]
+}
+4. build the static website :
+npm run build
+5. Copy and paste the contents of build/ into S3
+6. Check the index.html file for Link
+
+**EC2 - GO API IP:GET IP WHEN INSTANCE IS RUNNING**
+chmod 400 goapikey.pem
+ssh -i goapikey.pem ec2-user@<IP-Address>
+sudo yum update -y
+sudo yum install -y docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+exit
+ssh -i goapikey.pem ec2-user@<IP-Address>
+docker run -p 80:8080 anirudhrv1234/goapi
+
+**EC2 - NodeServer IP: GET IP WHEN INSTANCE IS RUNNING**
+chmod 400 Detectanamolyoutputvideo.pem
+ssh -i Detectanamolyoutputvideo.pem ec2-user@<IP-Address>
+sudo yum update -y
+sudo yum install -y docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+exit
+ssh -i Detectanamolyoutputvideo.pem ec2-user@<IP-Address>
+docker info
+docker run -p 80:4000 anirudhrv1234/nodeserver
 
 # For localtunnel (Making local server port publicly avaiable):
-
 1. brew install ruby
 2. echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.bash_profile
 3. gem install localtunnel
 4. lt -h "http://serverless.social" -p <port number>
+
+# DOCKER
+**RUN THE DOCKER COMMAND TO RUN CONTAINER**
+
 **Important**
+1. Always push to dockerhub - docker push UserName/ProjectName
 1. Try using nginx for serving static folder
 
 **Important**
 1. docker stop CONTAINERID
 
-2. lsof -P | grep ':4000' | awk '{print $2}' | xargs kill -9
+2. lsof -P | grep ':80' | awk '{print $2}' | xargs kill -9
 
 3. Problem with API_Go : Until a static IP Address for the mongodb server is not found, for each system
 the user has to build the API_Go container by changing the IP Address to their Computer IP in
   a. HandleUsers/UserFunc.go
   b. HandleImages/ImageFunc.go
+  (Problem solved by migrating mongodb to cloud)
 
-# To run from docker  :(Build Inside respective folders)
+**To run from docker  :(Build Inside respective folders)**
 1. 1. To build: docker build -t **-Name-** .
 
 
@@ -48,21 +92,21 @@ cd74ed0cd946717155f47b95bcd85bcc8371a561a8f672c8e2506555c20d8ac4
 **To run GO API**
 1. To build: docker build -t anirudhrv1234/goapi .
 
-2. Remote: docker run --rm -it -p 8080:8080 anirudhrv1234/goapi
+2. Remote: docker run --rm -it -p 80:8080 anirudhrv1234/goapi
 
 3. Local: docker run --rm -p 8080:8080 anirudhrv1234/goapi
 
-**To run NodeServer (Node JS)**
+**To run NodeServer (Node JS)** RUNNING ON AWS CURRENTLY
 1. To build: docker build -t anirudhrv/nodeserver .
 
-2. Local: docker run -p 4000:4000 anirudhrv1234/nodeserver
+2. Local: docker run -p 80:4000 anirudhrv1234/nodeserver
 
 **To run Client (React JS)**
 1. To build: docker build -t anirudhrv1234/reactjs .
 
 2. Local: docker run -p 3000:3000 anirudhrv1234/reactjs
 
-#Commands to run a Docker app (GENERAL):
+**Commands to run a Docker app (GENERAL):**
 
 **To make directory :**
 1. mkdir test

@@ -11,8 +11,10 @@ import Cookies from 'universal-cookie';
 class Signin extends Component {
 //TODO : ADD Footer information
 handleSubmit = () =>{
+  this.nodeserverurl = ""
+  this.goapiurl = ""
   var data = this.usercredentials.value+","+this.Password.value
-  axios.post("http://localhost:8080/authorizeuser",data)
+  axios.post(this.goapiurl+"/authorizeuser",data)
     .then(res => { // then print response status
       if(res.data["message"] == "No"){
         this.Error.innerHTML = "UserName or Password incorrect."

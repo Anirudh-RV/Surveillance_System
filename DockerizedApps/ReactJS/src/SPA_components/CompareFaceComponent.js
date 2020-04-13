@@ -14,7 +14,9 @@ class CompareFaceComponent extends Component {
         loaded:0,
         index:0,
       }
-
+      this.nodeserverurl = ""
+      this.goapiurl = ""
+      this.pythonbackendurl
   }
 
 Logout = () =>{
@@ -73,13 +75,13 @@ getfacesfrommlbackend = (imageName) =>{
 
   var username = this.props.location.state.userName;
   var imagename = imageName
-  var url = "http://localhost:4000/comparefaces/"+imagename
+  var url = this.nodeserverurl+"/comparefaces/"+imagename
   console.log('username : '+username)
   console.log('imagename : '+imagename)
   console.log('url : '+url)
 
   var data = {'username':username,'imagename':imagename,'imageurl':url}
-  axios.post("http://localhost:9000/index/",data)
+  axios.post(this.pythonbackendurl+"/index/",data)
     .then(res => { // then print response status
       console.log(res)
       console.log(res['data'])
@@ -107,7 +109,7 @@ getfacesfrommlbackend = (imageName) =>{
       this.showLength.innerHTML = "Number of matches : "+datalength;
       console.log(splitdata)
       this.MatchedImages = splitdata
-      this.ImageTag.src = "http://localhost:4000/comparefaces/"+this.MatchedImages[this.state.index];
+      this.ImageTag.src = this.nodeserverurl+"/comparefaces/"+this.MatchedImages[this.state.index];
     })
     .catch(err => { // then print response status
     console.log(err)
@@ -128,7 +130,7 @@ addToBackendUsingApi = (files) =>{
       sendToDjangoBackend = sendToDjangoBackend + files[files.length-1].name;
       console.log("filename : "+fileNames)
       // api call
-      axios.post("http://localhost:8080/insertimagedata",fileNames)
+      axios.post(this.goapiurl+"/insertimagedata",fileNames)
         .then(res => { // then print response status
           console.log(res)
           console.log('Sending to getfacesfrommlbackend')
@@ -171,7 +173,7 @@ RedirecToEditPage = () =>{
     }
 
     // header carries information of username to backend with data
-    axios.post("http://localhost:4000/upload",data,
+    axios.post(this.nodeserverurl+"/upload",data,
     {
     headers: {
       userName: userName,
@@ -202,8 +204,8 @@ RedirecToEditPage = () =>{
       else {
         this.state.index = this.state.index + 1
         if(this.ImageTag) {
-          console.log("http://localhost:4000/img/"+this.MatchedImages[this.state.index]);
-         this.ImageTag.src = "http://localhost:4000/comparefaces/"+this.MatchedImages[this.state.index];
+          console.log(this.nodeserverurl+"/img/"+this.MatchedImages[this.state.index]);
+         this.ImageTag.src = this.nodeserverurl+"/comparefaces/"+this.MatchedImages[this.state.index];
           }
         }
     }
@@ -215,7 +217,7 @@ RedirecToEditPage = () =>{
       else {
       this.state.index = this.state.index - 1
       if(this.ImageTag) {
-       this.ImageTag.src = "http://localhost:4000/comparefaces/"+this.MatchedImages[this.state.index];
+       this.ImageTag.src = this.nodeserverurl+"/comparefaces/"+this.MatchedImages[this.state.index];
         }
       }
     }

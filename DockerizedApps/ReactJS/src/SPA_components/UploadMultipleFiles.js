@@ -12,6 +12,8 @@ class UploadMultipleFiles extends Component {
         selectedFile: null,
         loaded:0
       }
+      this.nodeserverurl = ""
+      this.goapiurl = ""
   }
 
 Logout = () =>{
@@ -78,7 +80,7 @@ addToBackendUsingApi = (files) =>{
       }
       fileNames = fileNames + files[files.length-1].name;
       // api call
-      axios.post("http://localhost:8080/insertimagedata",fileNames)
+      axios.post(this.goapiurl+"/insertimagedata",fileNames)
         .then(res => { // then print response status
           console.log(res)
         })
@@ -127,7 +129,7 @@ onClickHandler = () => {
     }
 
     // header carries information of username to backend with data
-    axios.post("http://localhost:4000/upload",data,
+    axios.post(this.nodeserverurl+"/upload",data,
     {
     headers: {
       userName: userName

@@ -17,6 +17,8 @@ componentDidMount(){
 this.accountexists = false;
 this.userNameExists = false;
 this.handleEmail.bind(this);
+this.nodeserverurl = ""
+this.goapiurl = ""
 }
 
 //addusertodatabase
@@ -26,7 +28,7 @@ signupUser = () =>{
     var fullname = this.fullName.value;
     var password = this.Password.value;
     var data = email+","+username+","+fullname+","+password
-    axios.post("http://localhost:8080/addusertodatabase",data)
+    axios.post(this.goapiurl+"/addusertodatabase",data)
       .then(res => { // then print response status
         const cookies = new Cookies()
         cookies.set('username',this.userName.value, { path: '/' })
@@ -53,7 +55,7 @@ validateEmail = (email) => {
 
 checkforexistingUsername = (field,value) =>{
   var data = field+","+value;
-  axios.post("http://localhost:8080/validateinfo",data)
+  axios.post(this.goapiurl+"/validateinfo",data)
     .then(res => { // then print response status
       if(res.data["message"] == "Yes"){
         // existing emailID
@@ -72,7 +74,7 @@ checkforexistingUsername = (field,value) =>{
 
 checkforexistingEmail = (field,value,username) =>{
   var data = field+","+value;
-  axios.post("http://localhost:8080/validateinfo",data)
+  axios.post(this.goapiurl+"/validateinfo",data)
     .then(res => { // then print response status
       if(res.data["message"] == "Yes"){
         // existing emailID

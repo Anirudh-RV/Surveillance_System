@@ -46,6 +46,8 @@ class Routes extends Component {
                  <Route path="/signin" component= {Signin} />
                  <Route path ="/upload" component = {CustomRouting} />
                  <Route path = "/WelcomePage" component = {Home} />
+                 <Route exact path = "/index.html" component = {Home} />
+
                  <Route component={Error} />
                </Switch>
             </div>

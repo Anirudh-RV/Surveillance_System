@@ -10,6 +10,9 @@ constructor(){
   this.state= {
     index:0,
   }
+  this.nodeserverurl = ""
+  this.goapiurl = ""
+  this.pythonbackendurl = ""
 }
 
 onButton = () => {
@@ -83,7 +86,7 @@ initDraw= (drawElement,flag,outputdiv) => {
 
 saveastextfile = () =>{
   // send to nodejs to save
-  axios.post("http://localhost:4000/saveastextfile/",{
+  axios.post(this.nodeserverurl+"/saveastextfile/",{
     username : this.props.name,
     imagename : this.state.ImageNames[this.state.index],
     imagedata : this.outputdiv.innerHTML
@@ -106,7 +109,7 @@ NextImage= () => {
   else {
     this.state.index = this.state.index + 1
     if(this.ImageTag) {
-     this.ImageTag.src = "http://localhost:4000/img/"+this.props.name+"/images/"+this.state.ImageNames[this.state.index];
+     this.ImageTag.src = this.nodeserverurl+"/img/"+this.props.name+"/images/"+this.state.ImageNames[this.state.index];
       }
     }
   this.outputdiv.innerHTML = "";
@@ -122,7 +125,7 @@ PrevImage= () => {
   else {
   this.state.index = this.state.index - 1
   if(this.ImageTag) {
-   this.ImageTag.src = "http://localhost:4000/img/"+this.props.name+"/images/"+this.state.ImageNames[this.state.index];
+   this.ImageTag.src = this.nodeserverurl+"/img/"+this.props.name+"/images/"+this.state.ImageNames[this.state.index];
     }
   }
   this.outputdiv.innerHTML = "";
@@ -130,7 +133,7 @@ PrevImage= () => {
 
 testSaveText = () =>{
   var data = this.state.ImageNames[this.state.index]+","+ this.outputdiv.innerHTML
-  axios.post("http://localhost:8080/saveastextfile",data)
+  axios.post(this.goapiurl+"/saveastextfile",data)
     .then(res => { // then print response status
       console.log(res)
     })
@@ -142,11 +145,11 @@ testSaveText = () =>{
 getyolomloutput = () =>{
   var username = this.props.name
   var imagename = this.state.ImageNames[this.state.index]
-  var url = "http://localhost:4000/img/"+this.props.name+"/images/"+this.state.ImageNames[this.state.index]
-  var mloutputurl = "http://localhost:4000/img/"+this.props.name+"/images/mloutput_"+this.props.name+"_"+imagename
+  var url = this.nodeserverurl+"/img/"+this.props.name+"/images/"+this.state.ImageNames[this.state.index]
+  var mloutputurl = this.nodeserverurl+"/img/"+this.props.name+"/images/mloutput_"+this.props.name+"_"+imagename
   var data = {'username':username,'imagename':imagename,'imageurl':url,'coordinates':this.outputdiv.innerHTML}
 
-  axios.post("http://localhost:8000/yolo/",data)
+  axios.post(this.pythonbackendurl+"/yolo/",data)
     .then(res => { // then print response status
       console.log(res)
       window.open(mloutputurl, '_blank');
@@ -159,11 +162,11 @@ getyolomloutput = () =>{
 getmloutput = () =>{
   var username = this.props.name
   var imagename = this.state.ImageNames[this.state.index]
-  var url = "http://localhost:4000/img/"+this.props.name+"/images/"+this.state.ImageNames[this.state.index]
-  var mloutputurl = "http://localhost:4000/img/"+this.props.name+"/images/mloutput_"+this.props.name+"_"+imagename
+  var url = this.nodeserverurl+"/img/"+this.props.name+"/images/"+this.state.ImageNames[this.state.index]
+  var mloutputurl = this.nodeserverurl+"/img/"+this.props.name+"/images/mloutput_"+this.props.name+"_"+imagename
   var data = {'username':username,'imagename':imagename,'imageurl':url}
 
-  axios.post("http://localhost:8000/index/",data)
+  axios.post(this.pythonbackendurl+"/index/",data)
     .then(res => { // then print response status
       console.log(res)
       window.open(mloutputurl, '_blank');
@@ -174,14 +177,14 @@ getmloutput = () =>{
 }
 Apifuncgetimages = (userName) => {
   // data is going to be the username
-  axios.post("http://localhost:8080/getimages",userName)
+  axios.post(this.goapiurl+"/getimages",userName)
     .then(res => { // then print response status
       console.log(res)
        var ImageNames = res.data["data"].split("</br>");
        ImageNames.pop();
        this.state.ImageNames = ImageNames
          if(this.ImageTag) {
-          this.ImageTag.src = "http://localhost:4000/img/"+this.props.name+"/images/"+this.state.ImageNames[this.state.index];
+          this.ImageTag.src = this.nodeserverurl+"/img/"+this.props.name+"/images/"+this.state.ImageNames[this.state.index];
        }
     })
     .catch(err => { // then print response status
@@ -190,13 +193,13 @@ Apifuncgetimages = (userName) => {
   }
 
 downloadfiles = () =>{
-    axios.post("http://localhost:4000/downloadfiles/",{
+    axios.post(this.nodeserverurl+"/downloadfiles/",{
       username : this.props.name
     })
       .then(res => { // then print response status
         console.log(res)
         // after creating the zip file, now download
-        window.open('http://localhost:4000/img/'+this.props.name+'.zip');
+        window.open(this.nodeserverurl+'/img/'+this.props.name+'.zip');
       })
       .catch(err => {
       // then print response status
@@ -212,7 +215,7 @@ while(d2-d < ms);
 }
 
 downloadallfiles = () =>{
-  axios.post("http://localhost:4000/downloadallfiles/",{
+  axios.post(this.nodeserverurl+"/downloadallfiles/",{
     username : this.props.name
   })
     .then(res => { // then print response status
@@ -229,7 +232,7 @@ downloadallfiles = () =>{
 }
 
 testall = () =>{
-  window.open('http://localhost:4000/img/all_'+this.props.name+'.zip');
+  window.open(this.nodeserverurl+'/img/all_'+this.props.name+'.zip');
 }
 
 componentDidMount(){
