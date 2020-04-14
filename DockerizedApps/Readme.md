@@ -3,13 +3,14 @@ https://docs.docker.com/docker-for-mac/
 https://docs.docker.com/compose/gettingstarted/
 https://medium.com/travis-on-docker/how-to-dockerize-your-go-golang-app-542af15c27a2
 https://hostadvice.com/how-to/how-to-use-docker-containers-with-aws-ec2/
+https://medium.com/fredwong-it/aws-cloudfront-url-return-accessdenied-in-front-of-s3-react-app-a4bad7d3e4f2
 
 # AWS COMMANDS
 <br />**Important :**
 <br />
 update atlas with the public IP of Go API for Permissions
 <br />
-**S3 - ReactJS**
+**S3 - ReactJS Always set up with CloudFront for URL redirecting**
 1. Create bucket
 2. Allow public access
 3. Change bucket policy to : (Permissions/bucketpolicy)<br />
@@ -39,9 +40,21 @@ npm run build
 6. Check the index.html file for Link
 <br />
 **ERRORS**
-1. Problem with refreshing error occurs (ADD ROUTES)
+1. Problem with refreshing error occurs (ADD ROUTES WITH CLOUDFRONT)
 <br />
 2. Problem with downloading files (Stop ADBLOCK ON WEBSITE)
+
+**CloudFront**
+1. Setup a user using the CloudFront serivce
+2. Set the origin domain name as : 1bm16cs016react.s3.amazonaws.com
+3. Set the origin path : /1bm16cs016react.s3.amazonaws.com/index.html
+4. Click create
+5. Select the ID and go to Error pages
+6. Click create custom error response
+7. For error code 403-Access Denied, let the response page be /index.html with response code 200-OK
+8. Click okay
+9. Click the ID again and find the CloudFront URL-Domain Name (General section):
+Ex: d3sn2yu94s8xdo.cloudfront.net
 
 **EC2 - GO API IP:GET IP WHEN INSTANCE IS RUNNING**
 1. Create an EC2 instance and allow HTTP:80 connections in the security options

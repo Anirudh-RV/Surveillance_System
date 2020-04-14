@@ -10,6 +10,7 @@ import DownloadVideoComponent from './DownloadVideoComponent';
 import WelcomePage from './WelcomePage';
 import CameraFeed from './CameraFeed';
 import CompareFaceComponent from './CompareFaceComponent';
+import Error from './Error';
 
 import { useLocation } from 'react-router-dom'
 
@@ -47,6 +48,7 @@ class CustomRouting extends Component {
       return (
          <div>
               <Redirect to="/" />
+              <Route component={Error} />
          </div>
       );
     }
@@ -56,6 +58,7 @@ class CustomRouting extends Component {
       return (
          <div>
               <Redirect to="/" />
+              <Route component={Error} />
          </div>
       );
     }

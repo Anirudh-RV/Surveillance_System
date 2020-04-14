@@ -42,10 +42,9 @@ class Routes extends Component {
                  <Route path="/customrouting" component = {CustomRouting} />
                  <Route path="/signup" component = {SignUp} />
                  <Route path="/signin" component= {Signin} />
-                 <Route path ="/upload" component = {CustomRouting} />
-                 <Route path = "/WelcomePage" component = {Home} />
                  <Route exact path = "/index.html" component = {Home} />
-
+                 <Route path = "/error" component = {Error} />
+                 <Route exact path = "/error.html" component = {Error} />
                  <Route component={Error} />
                </Switch>
             </div>
